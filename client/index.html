@@ -1,0 +1,99 @@
+<!-- DOCTYPE HTML5 -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Test App</title>
+
+	<!-- JQUERY -->
+	<script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+	<!-- END JQUERY -->
+
+	<!-- SEMANTIC UI 1.10.4 -->
+	<link rel="stylesheet" type="text/css" href="themes/Semantic-UI-1.10.4/dist/semantic.css">
+	<script type="text/javascript" src="themes/Semantic-UI-1.10.4/dist/semantic.js"></script>
+	<!-- END SEMANTIC UI 1.10.4 -->
+
+	<!-- /////////////////////////////////////// LIBRARIES /////////////////////////////////////////// -->
+
+	<!-- NUMERALJS -->
+	<script type="text/javascript" src="vendor/numeral/numeral.js"></script>
+	<!-- END NUMERAL -->
+
+	<!-- STRINGJS -->
+	<script type="text/javascript" src="vendor/string/lib/string.js"></script>
+	<!-- END STRINGJS -->
+
+	<!-- MOMENTJS -->
+	<script type="text/javascript" src="vendor/moment/moment.js"></script>
+	<!-- END MOMENTJS -->
+
+	<!-- FOCUSIFY -->
+	<script type="text/javascript" src="vendor/focusify/focusify.js"></script>
+	<!-- END FOCUSIFY -->
+
+	<!-- LODASH -->
+	<script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
+	<!-- END LODASH -->
+
+	<!-- /////////////////////////////////////// END LIBRARIES /////////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////// ANGULAR MODULES /////////////////////////////////////////// -->
+
+	<!-- CORE -->
+	<script type="text/javascript" src="vendor/angular/angular.js"></script>
+	<!-- END CORE -->
+
+	<!-- ROUTER -->
+	<script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+	<!-- END ROUTER -->
+
+	<!-- MESSAGES -->
+	<script type="text/javascript" src="vendor/angular-messages/angular-messages.js"></script>
+	<!-- END MESSAGES -->
+
+	<!-- RESTANGULAR -->
+	<script type="text/javascript" src="vendor/restangular/dist/restangular.js"></script>
+	<!-- END RESTANGULAR -->
+
+	<!-- ANGULAR TRANSLATE -->
+    <script type="text/javascript" src="vendor/angular-translate/angular-translate.js"></script>
+    <script type="text/javascript" src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <!-- END ANGULAR TRANSLATE -->
+
+    <!-- LOCAL STORAGE -->
+    <script type="text/javascript" src="vendor/angular-local-storage/dist/angular-local-storage.js"></script>
+    <!-- END LOCAL STORAGE -->
+
+	<!-- /////////////////////////////////////// END ANGULAR MODULES /////////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////// CORE /////////////////////////////////////////// -->
+
+	<!-- MODULE LOGIN -->
+	<script type="text/javascript" src="modules/security/routes.js"></script>
+	<script type="text/javascript" src="modules/security/include.js"></script>
+
+	<script type="text/javascript" src="modules/security/models/LoginModel.js"></script>
+	<script type="text/javascript" src="modules/security/controllers/LoginController.js"></script>
+	<!-- END MODULE LOGIN -->
+
+	<!-- MODULE HOME -->
+	<script type="text/javascript" src="modules/home/routes.js"></script>
+	<script type="text/javascript" src="modules/home/include.js"></script>
+
+	<script type="text/javascript" src="modules/home/controllers/HomeController.js"></script>
+	<!-- END MODULE HOME -->
+
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="modules/loggedIn.js"></script>
+	<script type="text/javascript" src="modules/loggedInController.js"></script>
+	<link rel="stylesheet" type="text/css" href="app.css">
+
+	<!-- /////////////////////////////////////// END CORE /////////////////////////////////////////// -->
+
+</head>
+<body ng-app="app">
+
+	<div ui-view="root"></div>
+
+</body>
+</html>

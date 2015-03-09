@@ -1,0 +1,4 @@
+.ui.pointing.bottom.label, .ui.pointing.below.label{
+	position: absolute;
+	top: -35;	
+}

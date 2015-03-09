@@ -1,0 +1,16 @@
+{
+	"USERS_HEADER_LOGIN": "Meditek Login",
+	"USERS_FIELD_USERNAME": "Username",
+	"USERS_FIELD_PASSWORD": "Password",
+
+	"SYS_BTN_LOGIN": "Login",
+
+
+	"ERR_SYS_001": "You do not have post",
+	"ERR_SYS_002": "You do not have post data",
+	"ERR_SYS_003": "Error in your MySQL Query",
+	"ERR_SYS_004": "Username not exists",
+	"ERR_SYS_005": "Password wrong !!!",
+
+	"MESS_SYS_001": "Login Successfully"
+}

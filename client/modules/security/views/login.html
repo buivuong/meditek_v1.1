@@ -1,0 +1,59 @@
+<!--<div class="ui error message" style="position: fixed; top: 20; right: 20;">
+	<i class="close icon"></i>
+  	<div class="header">
+    	Các lỗi hệ thống
+  	</div>
+ 	<ul class="list">
+    	<li ng-click="clickError()">Người dùng bắt buộc nhập.</li>
+    	<li>Mật khẩu bắt buộc nhập.</li>
+  	</ul>
+</div>-->
+<div class="ui grid">
+	<div class="five wide column"></div>
+	<div class="six wide column">
+
+		<div class="ui segment" style="margin-top: 30px;">
+			<form class="ui form" id="loginForm" method="POST" name="loginForm" novalidate>
+				<h2 class="ui center aligned icon header">
+					<i class="circular users icon"></i>
+				 	{{'USERS_HEADER_LOGIN' | translate}}
+				</h2>
+
+				<div class="ui error message" style="display: block;" ng-show="credentials.errors.enable">
+					<ul class="list" ng-repeat="message in credentials.errors.messages">
+						<li>{{message}}</li>
+					</ul>
+				</div>
+
+				<!-- USERNAME -->
+				<div class="field focusify-disable" id="username">
+					<div class="ui left icon input">
+						<input type="text" placeholder="{{'USERS_FIELD_USERNAME' | translate}}" name="username" autocomplete="off"
+								ng-model="credentials.models.user_name"
+								required>
+						<i class="user icon"></i>
+					</div>
+				</div>
+				<!-- END USERNAME -->
+				<!-- PASSWORD -->
+				<div class="field focusify-disable" id="password">
+					<div class="ui left icon input">
+						<input type="password" placeholder="{{'USERS_FIELD_PASSWORD' | translate}}" name="password" 
+								ng-model="credentials.models.password"
+								required>
+						<i class="lock icon"></i>
+					</div>
+				</div>
+				<!-- END PASSWORD -->
+				<!-- LOGIN -->
+				<div class="field">
+					<button class="ui button" id="login" ng-click="credentials.login.click(credentials.models)">
+						{{'SYS_BTN_LOGIN' | translate}}
+					</button>
+				</div>
+				<!-- END LOGIN -->
+			</form>
+		</div>
+	
+	</div>
+</div>
