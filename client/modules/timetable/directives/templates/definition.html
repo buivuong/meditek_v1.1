@@ -1,0 +1,58 @@
+<div class="ui basic segment">
+	<!-- DATEPICKER FROM -->
+	<div class="ui small labeled input">
+		<div class="ui label">
+	    	From
+		</div>
+	  	<input placeholder="00/00/0000" type="text" ng-model="timetable.search.from" ng-date-picker>
+	</div>
+	<!-- END DATEPICKER FROM -->
+	&nbsp
+	<!-- DATEPICKER TO -->
+	<div class="ui small labeled input">
+		<div class="ui label">
+	    	To
+		</div>
+	  	<input placeholder="00/00/0000" type="text" ng-model="timetable.search.to" ng-date-picker>
+	</div>
+	<!-- END DATEPICKER TO -->
+	&nbsp
+	<!-- BUTTON -->
+	<div class="ui black button">Create Timetable</div>
+	<!-- END BUTTON -->
+</div>
+
+<div class="ui basic segment">
+	<div class="ui inverted dimmer" ng-class="{active: timetable.loading}" ng-if="timetable.loading">
+		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+	<div class="ui secondary button" ng-click="timetable.dialog.addDay()">Add Day</div>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>Day</th>
+				<th>Service</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-if="timetable.error" class="negative">
+				<td colspan="5" class="center aligned">{{timetable.error}}</td>
+			</tr>
+			<tr ng-if="timetable.list.length == 0 && !timetable.error">
+				<td colspan="5" class="center aligned">There is no items</td>
+			</tr>
+			<tr ng-repeat="row in timetable.list">
+				<td>{{row.day_of_Week}}</td>
+				<td>{{row.service_id}}</td>
+				<td>{{row.from_t}}</td>
+				<td>{{row.to_t}}</td>
+				<td>
+					<a><i class="write icon"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div> <!-- END UI SEGMENT -->

@@ -13,6 +13,10 @@
 	<div class="six wide column">
 
 		<div class="ui segment" style="margin-top: 30px;">
+			<div class="ui inverted dimmer" ng-class="{active: credentials.loading}">
+				<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+			</div>
+
 			<form class="ui form" id="loginForm" method="POST" name="loginForm" novalidate>
 				<h2 class="ui center aligned icon header">
 					<i class="circular users icon"></i>

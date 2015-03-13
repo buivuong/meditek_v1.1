@@ -27,6 +27,10 @@
 	<script type="text/javascript" src="vendor/moment/moment.js"></script>
 	<!-- END MOMENTJS -->
 
+	<!-- MOMENT TIMEZONE -->
+	<script type="text/javascript" src="vendor/moment-timezone/builds/moment-timezone-with-data.js"></script>
+	<!-- END MOMENT TIMEZONE -->
+
 	<!-- FOCUSIFY -->
 	<script type="text/javascript" src="vendor/focusify/focusify.js"></script>
 	<!-- END FOCUSIFY -->
@@ -34,6 +38,11 @@
 	<!-- LODASH -->
 	<script type="text/javascript" src="vendor/lodash/dist/lodash.js"></script>
 	<!-- END LODASH -->
+
+	<!-- PIKDADAY -->
+	<link rel="stylesheet" type="text/css" href="vendor/pikaday/css/pikaday.css">
+	<script type="text/javascript" src="vendor/pikaday/pikaday.js"></script>
+	<!-- END PIKADAY -->
 
 	<!-- /////////////////////////////////////// END LIBRARIES /////////////////////////////////////////// -->
 
@@ -83,9 +92,35 @@
 	<script type="text/javascript" src="modules/home/controllers/HomeController.js"></script>
 	<!-- END MODULE HOME -->
 
+	<!-- MODULE FUNCTION -->
+	<script type="text/javascript" src="modules/function/routes.js"></script>
+	<script type="text/javascript" src="modules/function/include.js"></script>
+
+	<script type="text/javascript" src="modules/function/models/FunctionModel.js"></script>
+	<!-- END FUNCTION -->
+
+	<!-- MODULE TIMETABLE -->
+	<script type="text/javascript" src="modules/timetable/routes.js"></script>
+	<script type="text/javascript" src="modules/timetable/include.js"></script>
+
+	<script type="text/javascript" src="modules/timetable/models/TimetableModel.js"></script>
+	<script type="text/javascript" src="modules/timetable/controllers/TimetableController.js"></script>
+	<script type="text/javascript" src="modules/timetable/controllers/TimetableDefinitionController.js"></script>
+	<script type="text/javascript" src="modules/timetable/directives/TimetableDefinitionDirective.js"></script>
+	<!-- END TIMETABLE -->
+
+	<!-- MODULE DOCTOR -->
+	<script type="text/javascript" src="modules/doctor/routes.js"></script>
+	<script type="text/javascript" src="modules/doctor/include.js"></script>
+
+	<script type="text/javascript" src="modules/doctor/models/DoctorModel.js"></script>
+	<script type="text/javascript" src="modules/doctor/directives/DoctorListDirective.js"></script>
+	<!-- END DOCTOR -->
+
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="modules/loggedIn.js"></script>
 	<script type="text/javascript" src="modules/loggedInController.js"></script>
+	<script type="text/javascript" src="common/directives/common.js"></script>
 	<link rel="stylesheet" type="text/css" href="app.css">
 
 	<!-- /////////////////////////////////////// END CORE /////////////////////////////////////////// -->

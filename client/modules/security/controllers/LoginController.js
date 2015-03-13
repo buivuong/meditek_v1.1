@@ -2,8 +2,8 @@ angular.module('app.security.controllers.login', [])
 
 .controller('LoginController', function($scope, $filter, $state, SecurityModel, localStorageService){
 	var models = {
-		user_name: null,
-		password: null
+		user_name: '',
+		password: ''
 	}
 
 	var errors = {
@@ -12,6 +12,8 @@ angular.module('app.security.controllers.login', [])
 	}
 
 	var onLoginClick = function(models){
+		$scope.credentials.loading = true;
+
 		var onSuccess = function(response){
 			$state.go('loggedIn.home');
 			localStorageService.set('user', response.user);
@@ -20,6 +22,7 @@ angular.module('app.security.controllers.login', [])
 		var onError = function(error){
 			$scope.credentials.errors = angular.copy(errors);
 			$scope.credentials.errors.enable = true;
+			$scope.credentials.loading = false;
 			$scope.credentials.errors.messages.push($filter('translate')(error.data.code));
 		}
 
@@ -28,6 +31,7 @@ angular.module('app.security.controllers.login', [])
 
 	/* INIT */
 	$scope.credentials = {
+		loading: false,
 		models: models,
 		login: {
 			click: function(models){

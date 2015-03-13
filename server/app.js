@@ -32,6 +32,8 @@ app.use(checkRouterMiddleware);
 require('./routes/security')(app);
 require('./routes/home')(app);
 require('./routes/function')(app);
+require('./routes/doctor')(app);
+require('./routes/timetable')(app);
 //require('./routes/menu')(app);
 /* END ROUTES */
 

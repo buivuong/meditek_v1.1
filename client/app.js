@@ -6,7 +6,8 @@ angular.module('app', [
 	'LocalStorageModule',
 
 	'app.loggedIn',
-	'app.security'
+	'app.security',
+	'app.directives.common'
 ])
 
 .config(function($stateProvider, $httpProvider, $urlRouterProvider, $translateProvider, RestangularProvider){

@@ -1,6 +1,9 @@
 angular.module('app.loggedIn', [
 	'app.loggedIn.controller',
-	'app.loggedIn.home'
+	'app.loggedIn.home',
+    'app.loggedIn.function',
+    'app.loggedIn.timetable',
+    'app.loggedIn.doctor'
 ])
 
 .config(function ($stateProvider) {

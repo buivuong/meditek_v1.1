@@ -1,25 +1,27 @@
-<div class="ui bottom attached segment pushable">
-    <div class="ui visible inverted left vertical sidebar menu">
-      <a class="item">
-        <i class="home icon"></i>
-        Home
-      </a>
-      <a class="item">
-        <i class="block layout icon"></i>
-        Topics
-      </a>
-      <a class="item">
-        <i class="smile icon"></i>
-        Friends
-      </a>
-      <a class="item">
-        <i class="calendar icon"></i>
-        History
-      </a>
+<div class="ui visible inverted left vertical sidebar menu">
+    <div class="item">
+        <a ui-sref="loggedIn.home" class="ui logo icon image">
+            <img src="images/logo.png">
+        </a>
     </div>
-    <div class="pusher">
-      <div class="ui basic segment">
-        	<div ui-view="main-content"></div>
-      </div>
+    <a class="item" ng-repeat="function in mFunction.list">
+        {{function.description}}
+    </a>
+</div>
+<div style="padding-left: 270px; padding-top: 15px; width: 99%">
+	<div ui-view="main-content"></div>
+</div>
+
+<!--<div class="ui visible inverted left vertical sidebar menu">
+    <div class="item">
+        <a ui-sref="loggedIn.home" class="ui logo icon image">
+            <img src="images/logo.png">
+        </a>
     </div>
-  </div>
+    <a class="item" ng-repeat="function in mFunction.list">
+        {{function.description}}
+    </a>
+</div>
+<div style="margin-left: 265px; margin-top: 15px;">
+	<div ui-view="main-content"></div>
+</div>-->

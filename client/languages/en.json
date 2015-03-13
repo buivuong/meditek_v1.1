@@ -5,6 +5,7 @@
 
 	"SYS_BTN_LOGIN": "Login",
 
+	"SYS_LOADING": "Loading",
 
 	"ERR_SYS_001": "You do not have post",
 	"ERR_SYS_002": "You do not have post data",
