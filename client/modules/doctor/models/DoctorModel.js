@@ -9,5 +9,10 @@ angular.module('app.loggedIn.doctor.models', [])
 		return instanceApi.post({data: data});
 	}
 
+	mainModel.byId = function(data){
+		var instanceApi = mainApi.all('byId');
+		return instanceApi.post({data: data});	
+	}
+
 	return mainModel;
 })

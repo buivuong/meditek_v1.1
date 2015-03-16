@@ -5,11 +5,11 @@
 	<table class="ui table">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Email</th>
-				<th>Phone</th>
+				<th>{{'MDL_DOCTOR_FIELD_NAME' | translate}}</th>
+				<th>{{'MDL_DOCTOR_FIELD_EMAIL' | translate}}</th>
+				<th>{{'MDL_DOCTOR_FIELD_PHONE' | translate}}</th>
 				<th>
-					Creation Date
+					{{'MDL_DOCTOR_FIELD_CREATION_DATE' | translate}}
 					<a ng-click="doctor.sort({field: 'creation_date', by: 'asc'})"
 						ng-show="doctor.search.Creation_date === 'desc'">
 						<i class="sort content descending icon"></i>
@@ -24,21 +24,21 @@
 		<tbody>
 			<tr>
 				<td>
-					<div class="ui transparent left icon small input">
+					<div class="ui transparent left icon small fluid input">
   						<input placeholder="Name" type="text" ng-model="doctor.search.NAME" 
   							ng-enter="doctor.onSearch({field: 'NAME', value: doctor.search.NAME})">
   						<i class="search icon"></i>
 					</div>
 				</td>
 				<td>
-					<div class="ui transparent left icon small input">
+					<div class="ui transparent left icon small fluid input">
   						<input placeholder="Email" type="text" ng-model="doctor.search.Email"
   							ng-enter="doctor.onSearch({field: 'Email', value: doctor.search.Email})">
   						<i class="search icon"></i>
 					</div>
 				</td>
 				<td>
-					<div class="ui transparent left icon small input">
+					<div class="ui transparent left icon small fluid input">
   						<input placeholder="Phone" type="text" ng-model="doctor.search.Phone"
   							ng-enter="doctor.onSearch({field: 'Phone', value: doctor.search.Phone})">
   						<i class="search icon"></i>
@@ -49,9 +49,9 @@
 				<td colspan="4" class="center aligned">{{doctor.error}}</td>
 			</tr>
 			<tr ng-if="doctor.list.length == 0 && !doctor.error">
-				<td colspan="4" class="center aligned">There is no items</td>
+				<td colspan="4" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
 			</tr>
-			<tr ng-repeat="row in doctor.list" ng-click="onRowClick({row: row})">
+			<tr ng-repeat="row in doctor.list" ng-dblclick="onRowClick({row: row})" style="cursor: pointer;">
 				<td>{{row.NAME}}</td>
 				<td ng-class="{negative: !row.Email}">{{row.Email | empty}}</td>
 				<td ng-class="{negative: !row.Phone}">{{row.Phone | empty}}</td>
@@ -61,7 +61,7 @@
 		<tfoot>
 			<tr>
 				<th colspan="4">
-					<i>{{doctor.count}} Items</i>
+					<i>{{doctor.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
 					&nbsp
 					<ng-pagination total="doctor.count" row="doctor.search.limit" ng-model="doctor.search.page"
 						on-change="doctor.loadPage(data)">

@@ -1,9 +1,22 @@
 angular.module('app.loggedIn.controller', [])
 
-.controller("LoggedInController", function($scope, FunctionModel){
+.constant('DAY_OF_WEEK', [
+	{value: 'Monday'},
+	{value: 'Tuesday'},
+	{value: 'Wednesday'},
+	{value: 'Thursday'},
+	{value: 'Friday'},
+	{value: 'Saturday'}
+])
+
+.controller('LoggedInController', function($scope, FunctionModel, DAY_OF_WEEK){
 	$scope.mFunction = {
 		list: [],
 		error: false
+	}
+
+	$scope.common_options = {
+		DAY_OF_WEEK: DAY_OF_WEEK
 	}
 
 	/* LOAD FUNCTION FIRST */
@@ -14,7 +27,7 @@ angular.module('app.loggedIn.controller', [])
 
 		})
 	}
-	/* END LOAD FUNCTION FIRST */
+	/* END LOAD FUNCTION FIRST */	
 
 	loadInit();
 })

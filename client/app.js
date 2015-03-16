@@ -4,6 +4,7 @@ angular.module('app', [
 	'restangular',
 	'pascalprecht.translate',
 	'LocalStorageModule',
+	'ui.utils',
 
 	'app.loggedIn',
 	'app.security',

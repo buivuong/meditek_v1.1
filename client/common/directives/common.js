@@ -30,6 +30,15 @@ angular.module('app.directives.common', [])
 	}//end return
 })
 
+.directive('ngDropdown', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs){
+            elem.dropdown();
+        }
+    }
+})
+
 .directive('ngPagination', function($timeout){
 	return {
 		restrict: 'EA',
@@ -113,7 +122,7 @@ angular.module('app.directives.common', [])
 
                 //Create a new scope for modal
                 var modalScope = $rootScope.$new();
-                if(options.resolve !== null && options.resolve !== null)
+                if(options.resolve !== null)
                     modalScope.resolve = options.resolve;
 
                 var closeDeferred = $q.defer();
@@ -148,6 +157,14 @@ angular.module('app.directives.common', [])
                     options.appendElement.append(modalElement);
                 }else{
                     body.append(modalElement);
+                    modalElement.modal({
+                        'closable': false,
+                        'selector': {
+                            close: '.closed'
+                        }
+                    });
+
+                    modalElement.modal('show');
                 }
 
                 // We now have a modal object.

@@ -4,8 +4,15 @@
 	"USERS_FIELD_PASSWORD": "Password",
 
 	"SYS_BTN_LOGIN": "Login",
+	"SYS_BTN_MENU": "Menu",
+	"SYS_BTN_LANG": "Language",
+
+	"SYS_LANG_EN": "English",
+	"SYS_LANG_VN": "Vietnamese",
 
 	"SYS_LOADING": "Loading",
+
+	"SYS_LABEL_ITEMS": "Items",
 
 	"ERR_SYS_001": "You do not have post",
 	"ERR_SYS_002": "You do not have post data",
@@ -13,5 +20,16 @@
 	"ERR_SYS_004": "Username not exists",
 	"ERR_SYS_005": "Password wrong !!!",
 
-	"MESS_SYS_001": "Login Successfully"
+	"MESS_SYS_001": "Login Successfully",
+	"MESS_SYS_002": "There is no items",
+
+	"BRD_HOME": "Home",
+	"BRD_TIMETABLE": "Timetable",
+	"BRD_TIMETABLE_INDEX": "List Of Doctor",
+	"BRD_TIMETABLE_DOCTOR": "Doctor",
+
+	"MDL_DOCTOR_FIELD_NAME": "Name",
+	"MDL_DOCTOR_FIELD_EMAIL": "Email",
+	"MDL_DOCTOR_FIELD_PHONE": "Phone",
+	"MDL_DOCTOR_FIELD_CREATION_DATE": "Creation Date"
 }

@@ -1,27 +1,31 @@
-<div class="ui visible inverted left vertical sidebar menu">
-    <div class="item">
-        <a ui-sref="loggedIn.home" class="ui logo icon image">
-            <img src="images/logo.png">
-        </a>
-    </div>
-    <a class="item" ng-repeat="function in mFunction.list">
-        {{function.description}}
+<div class="ui inverted small menu">
+    <a class="item" ng-click="menu.toggle = !menu.toggle">
+        <i class="unordered list icon"></i> {{'SYS_BTN_MENU' | translate}}
     </a>
-</div>
-<div style="padding-left: 270px; padding-top: 15px; width: 99%">
-	<div ui-view="main-content"></div>
+    <div class="right menu">
+        <div class="ui dropdown item" ng-dropdown>
+            {{'SYS_BTN_LANG' | translate}} <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item">{{'SYS_LANG_EN' | translate}}</a>
+                <a class="item">{{'SYS_LANG_VN' | translate}}</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!--<div class="ui visible inverted left vertical sidebar menu">
-    <div class="item">
+<div class="ui inverted left vertical sidebar menu" ng-class="{visible: menu.toggle}" style="top: 34px;">
+    <!--<div class="item">
         <a ui-sref="loggedIn.home" class="ui logo icon image">
             <img src="images/logo.png">
         </a>
-    </div>
+    </div>-->
     <a class="item" ng-repeat="function in mFunction.list">
         {{function.description}}
     </a>
 </div>
-<div style="margin-left: 265px; margin-top: 15px;">
-	<div ui-view="main-content"></div>
+<div ui-view="main-content"></div>
+
+<!--<div class="ui black big launch right attached fixed button" 
+    style="min-width: auto; position: fixed; top: 0; left: 0;" ng-click="menu.toggle = !menu.toggle">
+    <i class="content icon"></i>
 </div>-->

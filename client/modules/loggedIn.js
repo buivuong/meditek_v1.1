@@ -3,7 +3,9 @@ angular.module('app.loggedIn', [
 	'app.loggedIn.home',
     'app.loggedIn.function',
     'app.loggedIn.timetable',
-    'app.loggedIn.doctor'
+    'app.loggedIn.doctor',
+    'app.loggedIn.service',
+    'app.loggedIn.appointment'
 ])
 
 .config(function ($stateProvider) {

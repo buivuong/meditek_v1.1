@@ -34,5 +34,21 @@ module.exports = {
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
-	}//end post list
+	},//end post list
+
+	postById: function(req, res){
+		var postData = req.body.data;
+
+		knex
+		.column('*')
+		.select()
+		.from('doctors')
+		.where('doctor_id', postData.doctor_id)
+		.then(function(rows){
+			res.json({data: rows[0]});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	}
 }

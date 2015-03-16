@@ -7,4 +7,5 @@ module.exports = function(app){
 	var module = config.defaultUrl+'doctor/';
 
 	app.post(module+'list', commonFunction.ensureAuthorized, DoctorController.postList);
+	app.post(module+'byId', commonFunction.ensureAuthorized, DoctorController.postById);
 }

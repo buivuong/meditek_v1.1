@@ -9,7 +9,7 @@ module.exports = {
 		var postData = req.body.data;
 
 		/* CHECK USERNAME */
-		knex.select('user_name', 'password')
+		knex.select('id', 'user_name', 'password')
 			.from('users')
 			.where({
 				user_name: postData.user_name
@@ -20,18 +20,18 @@ module.exports = {
 					return;
 				}
 
-				bcrypt.compare(postData.password, rows[0].password, function(err, compareResult){
-					if(!compareResult){
-						commonFunction.commonError(null, 'ERR_SYS_005', res);
-						return;
-					}else{
-						var user = {
-							user_name: postData.user_name,
-							token: jwt.sign(rows[0], 'meditek')
-						}
-						return res.json({code: 'MESS_SYS_001', user: user});
+				var compareResult = bcrypt.compareSync(postData.password, rows[0].password);
+				if(!compareResult){
+					commonFunction.commonError(null, 'ERR_SYS_005', res);
+					return;
+				}else{
+					var user = {
+						id: rows[0].id,
+						user_name: postData.user_name,
+						token: jwt.sign(rows[0], 'meditek')
 					}
-				})
+					return res.json({code: 'MESS_SYS_001', user: user});
+				}
 			})
 			.catch(function(error){
 				commonFunction.commonError(error, 'ERR_SYS_003', res);
