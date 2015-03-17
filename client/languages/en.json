@@ -31,5 +31,15 @@
 	"MDL_DOCTOR_FIELD_NAME": "Name",
 	"MDL_DOCTOR_FIELD_EMAIL": "Email",
 	"MDL_DOCTOR_FIELD_PHONE": "Phone",
-	"MDL_DOCTOR_FIELD_CREATION_DATE": "Creation Date"
+	"MDL_DOCTOR_FIELD_CREATION_DATE": "Creation Date",
+
+	"ERR_TIMETABLE_001": "Service is required",
+	"ERR_TIMETABLE_002": "Day is required",
+	"ERR_TIMETABLE_003": "From Time is required",
+	"ERR_TIMETABLE_004": "To Time is required",
+
+	"ERR_TIMETABLE_005": "From Time is not datetime",
+	"ERR_TIMETABLE_006": "To Time is not datetime",
+	"ERR_TIMETABLE_007": "There is also a timetable with same from time",
+	"ERR_TIMETABLE_008": "There is also a timetable with same to time"
 }

@@ -40,28 +40,41 @@ angular.module('app.loggedIn.timetable.directives.definition', [])
 					resolve: {options: scope.options},
      				templateUrl: 'timetableAddDialog',
      				controller: function($scope, close){
-     					var save = function(){
-     						_.forEach($scope.timetable.form.errors.require, function(error){
+     					var beforeSave = function(errors){
+     						_.forEach(errors, function(error){
 								angular.element('#'+error.field).removeClass('error');
 								angular.element('#'+error.field+'_label').removeClass('visible');
      							angular.element('#'+error.field+'_label').empty();
 							})
+     					}
+
+     					var beforeSaveError = function(errors){
+     						if(errors){
+	     						_.forEach(errors, function(error){
+									angular.element('#'+error.field).addClass('error');
+									angular.element('#'+error.field+'_label').addClass('visible');
+									angular.element('#'+error.field+'_label').append($filter('translate')(error.code)+'<br>');
+								})
+							}     					
+						}
+
+     					var save = function(){
+							beforeSave($scope.timetable.form.errors);
 
      						var postData = angular.copy($scope.timetable.form);
      						postData.Created_by = postData.Last_updated_by = localStorageService.get('user').id;
      						postData.Creation_date = postData.Last_update_date = moment().format('YYYY-MM-DD hh:mm:ss');
+     						postData.doctor_id = $stateParams.doctorId;
+     						if(!S(postData.from_time).isEmpty())
+     							postData.from_time = moment().format('YYYY-MM-DD').toString()+' '+S(postData.from_time).left(2).s+':'+S(postData.from_time).right(2).s;
+     						if(!S(postData.to_time).isEmpty())
+     							postData.to_time = moment().format('YYYY-MM-DD').toString()+' '+S(postData.to_time).left(2).s+':'+S(postData.to_time).right(2).s;
 
      						TimetableModel.add(postData).then(function(response){
 
      						}, function(error){
      							$scope.timetable.form.errors = angular.copy(error.data.errors);
-     							if($scope.timetable.form.errors.require.length > 0){
-     								_.forEach($scope.timetable.form.errors.require, function(error){
-     									angular.element('#'+error.field).addClass('error');
-     									angular.element('#'+error.field+'_label').addClass('visible');
-     									angular.element('#'+error.field+'_label').append(error.code);
-     								})
-     							}
+     							beforeSaveError($scope.timetable.form.errors);
      						})
      					}
 
@@ -76,15 +89,19 @@ angular.module('app.loggedIn.timetable.directives.definition', [])
 								from_time: null,
 								to_time: null,
 								description: '',
-								errors: {
-									require: [],
-									datetime: []
-								}
+								errors: []
 							},
 							save: function(){ save(); }
      					}
+
+     					$scope.close = function(){
+     						close("saassa", 200);
+     					}
      				}
     			}).then(function(modal){
+    				modal.close.then(function(result){
+    					console.log(result);
+    				});
     			})
 			}
 			/* END DIALOG */

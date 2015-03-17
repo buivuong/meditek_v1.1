@@ -176,7 +176,8 @@ angular.module('app.directives.common', [])
                 };
 
                 modal.close.then(function(result){
-                    angular.element(modalElement[0]).closeModal();
+                    modalElement.modal('hide');
+                    modalElement.remove();
                     modalScope.$destroy();
                 })
 
