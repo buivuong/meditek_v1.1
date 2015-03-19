@@ -41,5 +41,47 @@
 	"ERR_TIMETABLE_005": "From Time is not datetime",
 	"ERR_TIMETABLE_006": "To Time is not datetime",
 	"ERR_TIMETABLE_007": "There is also a timetable with same from time",
-	"ERR_TIMETABLE_008": "There is also a timetable with same to time"
+	"ERR_TIMETABLE_008": "There is also a timetable with same to time",
+
+
+	"BRD_ALLERGIES" : "Allergies",
+	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",
+	"FRM_LBL_ALLERGIE_ENABLE" : "Make this allergie available",
+
+	"TBL_LBL_NAME" : "Name",
+	"TBL_LBL_CREATION_DATE" : "Creation date",
+	"TBL_LBL_STATUS" : "Status",
+	"TBL_LBL_ENABLE" : "Enable",
+
+	"FRM_LBL_DESCRIPTION" : "Description",
+	"FRM_LBL_ISENABLE" : "Enable",
+	"FRM_LBL_NAME" : "Name",
+	"FRM_LBL_FIRST_NAME" : "First name",
+	"FRM_LBL_MIDDLE_NAME" : "Middle name",
+	"FRM_LBL_LAST_NAME" : "Last name",
+	"FRM_LBL_SUR_NAME" : "Sur name",
+	"FRM_LBL_FAMILY_NAME" : "Family name",
+	"FRM_LBL_BIRTHDAY" : "Date of birth",
+	"FRM_LBL_GENDER" : "Gender",
+	"FRM_LBL_ADDRESS" : "Address",
+	"FRM_LBL_ADDRESS1" : "Address 1",
+	"FRM_LBL_ADDRESS2" : "Address 2",
+	"FRM_LBL_POST_CODE" : "Post code",
+	"FRM_LBL_HOME_PHONE" : "Home phone",
+	"FRM_LBL_MOBILE_PHONE" : "Mobile",
+	"FRM_LBL_PHONE" : "Phone",
+	"FRM_LBL_HOME_PHONE_SHORT" : "H",
+	"FRM_LBL_MOBILE_PHONE_SHORT" : "M",
+	"FRM_LBL_COLOR" : "Color",
+	
+	"FRM_BTN_ADD" : "Add",
+	"FRM_BTN_EDIT" : "Edit",
+	"FRM_BTN_CANCEL" : "Cancel",
+	"FRM_BTN_CLEAR" : "Clear",
+	"FRM_BTN_RESET" : "Reset",
+	"FRM_BTN_UPDATE" : "Update",
+	"FRM_BTN_SAVE" : "Save",
+	"FRM_BTN_REMOVE" : "Remove",
+	"FRM_BTN_DELETE" : "Delete",
+	"FRM_BTN_SEARCH" : "Search"
 }

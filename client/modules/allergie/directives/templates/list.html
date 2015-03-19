@@ -6,32 +6,32 @@
 	<!-- ALLERGIE FORM -->
 	<form class="ui form">
 		<div class="html ui top attached segment">
-			<div class="ui top attached label">Allegie detail</div>
-			<h4 class="ui dividing header">Allergie detail</h4>
+			<div class="ui top attached label">{{'FRM_LBL_ALLERGIE_DETAIL' | translate}}</div>
+			<h4 class="ui dividing header">{{'FRM_LBL_ALLERGIE_DETAIL' | translate}}</h4>
 
 			<div class="field">
-			    <label>Description</label>
+			    <label>{{'FRM_LBL_DESCRIPTION' | translate}}</label>
 			    <textarea ng-model="allergie.allergie_form.allergie_name"></textarea>
 			</div>
 
 			<div class="field">
 				<div class="ui toggle checkbox">
 			      <input name="privacy" type="radio" ng-model="allergie.allergie_form.allergie_name" ng-checked="allergie.allergie_form.allergie_name===1">
-			      <label>Make this allergie available</label>
+			      <label>{{'FRM_LBL_ALLERGIE_ENABLE' | translate}}</label>
 			    </div>
 			</div>
 			<div class="ui divider"></div>
 			<div class="right floated ui labeled icon button" ng-click="allergie.insert()" ng-class="{'disabled':!allergie.allergie_form.allergie_name || allergie.allergie_form.allergie_name===''}" ng-show="allergie.isEditMode === false">
-				  <i class="add circle icon"></i>
-				  {{'BTN_ADD' | translate}}
+				  <i class="plus icon"></i>
+				  {{'FRM_BTN_ADD' | translate}}
 			</div>
 			<div class="right floated ui labeled icon button" ng-click="allergie.edit()" ng-class="{'disabled':!allergie.allergie_form.allergie_name || allergie.allergie_form.allergie_name===''}"  ng-show="allergie.isEditMode === true">
-				  <i class="add circle icon"></i>
-				  {{'BTN_EDIT' | translate}}
+				  <i class="save icon"></i>
+				  {{'FRM_BTN_SAVE' | translate}}
 			</div>
 			<div class="right floated ui labeled icon button" ng-click="allergie.cancelEdit()" ng-show="allergie.isEditMode === true">
-				  <i class="add circle icon"></i>
-				  {{'BTN_CANCEL' | translate}}
+				  <i class="remove icon"></i>
+				  {{'FRM_BTN_CANCEL' | translate}}
 			</div>
 		</div>
 	</form>
@@ -43,10 +43,10 @@
 	<table class="ui table">
 		<thead>
 			<tr>
-				<th>{{'MDL_ALLERGIE_FIELD_NAME' | translate}}</th>
-				<th>{{'MDL_ALLERGIE_FIELD_ISENABLE' | translate}}</th>
+				<th>{{'TBL_LBL_NAME' | translate}}</th>
+				<th>{{'TBL_LBL_ENABLE' | translate}}</th>
 				<th>
-					{{'MDL_ALLERGIE_FIELD_CREATION_DATE' | translate}}
+					{{'TBL_LBL_CREATION_DATE' | translate}}
 					<a style="cursor: pointer;" ng-click="allergie.sort({field: 'creation_date', by: 'asc'})"
 						ng-show="allergie.search.Creation_date === 'desc'">
 						<i class="sort content descending icon"></i>
