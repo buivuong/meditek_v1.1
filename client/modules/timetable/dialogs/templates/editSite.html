@@ -1,0 +1,40 @@
+<div class="ui modal">
+	<i class="close icon" ng-click="site.close(null)"></i>
+    <div class="content">
+    	<form class="ui small form">
+    		<div class="two fields">
+    			<!-- WEEK -->
+    			<div class="required field" id="week_ord_of_month">
+                    <label>{{'MDL_TIMETABLE_FIELD_WEEK' | translate}}</label>
+                    <select ng-model="site.form.week_ord_of_month" disabled
+                            ng-options="s.code as s.value for s in site.options.weeks">
+                    </select>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                            id="week_ord_of_month_label">
+                    </div>
+                </div>
+    			<!-- END WEEK -->
+    			<!-- SITE -->
+    			<div class="required field" id="site_id">
+                    <label>{{'MDL_TIMETABLE_FIELD_SITE' | translate}}</label>
+                    <select ng-model="site.form.site_id" 
+                            ng-options="s.id as s.Site_name for s in site.options.sites">
+                    </select>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                            id="site_id_label">
+                    </div>
+                </div>
+    			<!-- END SITE -->
+    		</div>
+    		<!-- DESCRIPTION -->
+    		<div class="field">
+                <label>{{'MDL_TIMETABLE_FIELD_DESCRIPTION' | translate}}</label>
+                <textarea ng-model="site.form.description"></textarea>
+            </div>
+            <div class="field">
+                <div class="ui small button" ng-click="site.save()">{{'SYS_BTN_SAVE' | translate}}</div>
+            </div>
+    		<!-- END DESCRIPTION -->
+    	</form>
+    </div>
+</div>

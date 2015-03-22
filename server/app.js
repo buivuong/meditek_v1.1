@@ -36,6 +36,8 @@ require('./routes/doctor')(app);
 require('./routes/timetable')(app);
 require('./routes/service')(app);
 require('./routes/appointment')(app);
+require('./routes/problem')(app);
+require('./routes/site')(app);
 /* END ROUTES */
 
 var server = app.listen(3001, function(){

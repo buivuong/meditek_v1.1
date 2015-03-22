@@ -1,6 +1,6 @@
 angular.module('app.loggedIn.timetable.directives.definition', [])
 
-.directive('timetableDefinition', function(TimetableModel, AppointmentModel, ModalService, localStorageService, $stateParams, $filter){
+.directive('timetableDefinition', function(TimetableModel, DoctorModel, CommonModel, ModalService, localStorageService, $stateParams, $timeout, $state, $filter){
 	return {
 		restrict: 'EA',
 		templateUrl: 'modules/timetable/directives/templates/definition.html',
@@ -8,129 +8,223 @@ angular.module('app.loggedIn.timetable.directives.definition', [])
 			options: '='
 		},
 		link: function(scope, elem, attrs){
+			var loadDoctor = function(){
+				DoctorModel.byId({doctor_id: $stateParams.doctorId})
+				.then(function(response){
+					scope.doctor.item = response.data;
+				}, function(error){})
+			}
+
+			var loadSite = function(){
+				TimetableModel.siteList({doctor_id: $stateParams.doctorId})
+				.then(function(response){
+					var i = 0;
+					_.forEach(scope.timetable.list, function(timetable_row){
+						scope.timetable.list[i].site = [];
+						_.forEach(response.data, function(site_row){
+							if(site_row.cal_header_df_id === timetable_row.cal_header_df_id)
+								scope.timetable.list[i].site.push(site_row);
+						})
+						i++;
+					})
+				}, function(error){})
+			}
+
 			var load = function(){
 				scope.timetable.loading = true;
 				TimetableModel.list({doctor_id: $stateParams.doctorId}).then(function(response){
 					scope.timetable.list = response.data;
-					scope.timetable.error = '';
-					scope.timetable.loading = false;
 
-					var i = 0;
-					_.forEach(scope.timetable.list, function(row){
-						scope.timetable.list[i].from_t = moment(row.from_time).format('HH:mm');
-						scope.timetable.list[i].to_t = moment(row.to_time).format('HH:mm');
-						i++;
-					})
+					/* LOAD SITE */
+					scope.site.load();
+					/* END LOAD SITE */
+					scope.timetable.loading = false;
 				}, function(error){
 					scope.timetable.loading = false;
-					scope.timetable.error = $filter('translate')(error.data.code);
 				})
-			}
-
-			var loadAppointment = function(){
-				AppointmentModel.byDoctor({doctor_id: $stateParams.doctorId}).then(function(response){
-					scope.timetable.current.from_time = moment(response.data.FROM_TIME).format('DD/MM/YYYY');
-					scope.timetable.current.to_time = moment(response.data.TO_TIME).format('DD/MM/YYYY');
-				}, function(error){})
 			}
 
 			/* DIALOG */
 			var addDay = function(){
 				ModalService.showModal({
 					resolve: {options: scope.options},
-     				templateUrl: 'timetableAddDialog',
-     				controller: function($scope, close){
-     					var beforeSave = function(errors){
-     						_.forEach(errors, function(error){
-								angular.element('#'+error.field).removeClass('error');
-								angular.element('#'+error.field+'_label').removeClass('visible');
-     							angular.element('#'+error.field+'_label').empty();
-							})
-     					}
-
-     					var beforeSaveError = function(errors){
-     						if(errors){
-	     						_.forEach(errors, function(error){
-									angular.element('#'+error.field).addClass('error');
-									angular.element('#'+error.field+'_label').addClass('visible');
-									angular.element('#'+error.field+'_label').append($filter('translate')(error.code)+'<br>');
-								})
-							}     					
-						}
-
-     					var save = function(){
-							beforeSave($scope.timetable.form.errors);
-
-     						var postData = angular.copy($scope.timetable.form);
-     						postData.Created_by = postData.Last_updated_by = localStorageService.get('user').id;
-     						postData.Creation_date = postData.Last_update_date = moment().format('YYYY-MM-DD hh:mm:ss');
-     						postData.doctor_id = $stateParams.doctorId;
-     						if(!S(postData.from_time).isEmpty())
-     							postData.from_time = moment().format('YYYY-MM-DD').toString()+' '+S(postData.from_time).left(2).s+':'+S(postData.from_time).right(2).s;
-     						if(!S(postData.to_time).isEmpty())
-     							postData.to_time = moment().format('YYYY-MM-DD').toString()+' '+S(postData.to_time).left(2).s+':'+S(postData.to_time).right(2).s;
-
-     						TimetableModel.add(postData).then(function(response){
-
-     						}, function(error){
-     							$scope.timetable.form.errors = angular.copy(error.data.errors);
-     							beforeSaveError($scope.timetable.form.errors);
-     						})
-     					}
-
-     					$scope.timetable = {
-     						options: {
-								DAY_OF_WEEK: $scope.resolve.options.DAY_OF_WEEK,
-								services: $scope.resolve.options.services
-							},
-							form: {
-								day_of_Week: '',
-								SERVICE_ID: null,
-								from_time: null,
-								to_time: null,
-								description: '',
-								errors: []
-							},
-							save: function(){ save(); }
-     					}
-
-     					$scope.close = function(){
-     						close("saassa", 200);
-     					}
-     				}
+     				templateUrl: 'modules/timetable/dialogs/templates/add.html',
+     				controller: 'TimetableDialogAddController'
     			}).then(function(modal){
     				modal.close.then(function(result){
-    					console.log(result);
+    					if(result) {
+    						scope.timetable.load();
+    						scope.timetable.notify.add = result;
+    					}
     				});
     			})
 			}
+
+			var editDay = function(id){
+				ModalService.showModal({
+					resolve: {options: scope.options, id: id},
+     				templateUrl: 'modules/timetable/dialogs/templates/edit.html',
+     				controller: 'TimetableDialogEditController'
+    			}).then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.timetable.load();
+    						scope.timetable.notify.edit = result;
+    					}
+    				});
+    			})
+			}
+
+			var removeDay = function(row){
+				ModalService.showModal({
+					resolve: {id: row},
+					templateUrl: 'common/views/remove.html',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						if(result){
+							TimetableModel.remove(result).then(function(deleted){
+								scope.timetable.load();
+								scope.timetable.notify.remove = deleted.data;
+							}, function(error){});
+						}
+					})
+				})
+			}
+
+			var addSite = function(row){
+				ModalService.showModal({
+					resolve: {options: scope.options, doctor: scope.doctor.item, timetable: row},
+     				templateUrl: 'modules/timetable/dialogs/templates/addSite.html',
+     				controller: 'TimetableDialogAddSiteController'
+    			}).then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.timetable.load();
+    						scope.site.notify.add = result;
+    					}
+    				});
+    			})
+			}
+
+			var editSite = function(row, id){
+				ModalService.showModal({
+					resolve: {options: scope.options, doctor: scope.doctor.item, timetable: row, id: id},
+     				templateUrl: 'modules/timetable/dialogs/templates/editSite.html',
+     				controller: 'TimetableDialogEditSiteController'
+    			}).then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.timetable.load();
+    						scope.site.notify.edit = result;
+    					}
+    				});
+    			})
+			}
+
+			var removeSite = function(id){
+				ModalService.showModal({
+					resolve: {id: id},
+					templateUrl: 'common/views/remove.html',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						if(result){
+							TimetableModel.siteRemove({id: result}).then(function(deleted){
+								scope.timetable.load();
+							}, function(error){});
+						}
+					})
+				})
+			}
+
+			var openTimetable = function(row){
+				row.clinical_dept_id = scope.doctor.item.CLINICAL_DEPT_ID;
+				ModalService.showModal({
+					resolve: {row: row},
+					templateUrl: 'notifyToSaveTimetable',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						if(result){
+							scope.timetable.dialog.createTimetable(result);
+						}
+					})
+				})
+			}
+
+			var createTimetable = function(row){
+				row.clinical_dept_id = scope.doctor.item.CLINICAL_DEPT_ID;
+				row.Appt_interval = scope.doctor.item.Appt_interval;
+				TimetableModel.createTimetable(row)
+				.then(function(response){
+					scope.timetable.notify.save = response.data;
+				}, function(error){
+					scope.timetable.error.location = $filter('translate')(error.data.code);
+				})
+			}
 			/* END DIALOG */
 
-			scope.timetable = {
-				current: {
-					from_time: null,
-					to_time: null
+			scope.doctor = {
+				load: function(){ loadDoctor(); },
+				item: null
+			}
+
+			scope.site = {
+				notify: {
+					add: null,
+					edit: null,
+					remove: null
 				},
 				dialog: {
-					addDay: function(){ addDay(); }
+					addSite: function(id){ addSite(id); },
+					editSite: function(row, id){ editSite(row, id); },
+					removeSite: function(id){ removeSite(id); }
+				},
+				load: function(){ loadSite(); }
+			}
+
+			scope.timetable = {
+				notify: {
+					add: null,
+					edit: null,
+					remove: null,
+					save: null
+				},
+				dialog: {
+					addDay: function(){ addDay(); },
+					editDay: function(id){ editDay(id); },
+					removeDay: function(row){ removeDay(row); },
+					openTimetable: function(row){ openTimetable(row); },
+					createTimetable: function(row){ createTimetable(row); }
 				},
 				search: {
 					from: moment().format('DD/MM/YYYY'),
 					to: moment().add(1, 'years').format('DD/MM/YYYY')
 				},
 				list: [],
-				error: '',
+				error: {
+					location: ''
+				},
 				loading: false,
 				load: function(){ load(); }
 			}//end timetable
 
-			scope.appointment = {
-				load: function(){ loadAppointment(); }
-			}
-
 			//Load First
 			scope.timetable.load();
-			scope.appointment.load();
+			scope.doctor.load();
 		}
 	}//end return
 })

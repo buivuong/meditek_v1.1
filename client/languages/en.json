@@ -6,6 +6,12 @@
 	"SYS_BTN_LOGIN": "Login",
 	"SYS_BTN_MENU": "Menu",
 	"SYS_BTN_LANG": "Language",
+	"SYS_BTN_ADD": "Add",
+	"SYS_BTN_SAVE": "Save",
+	"SYS_BTN_YES": "Yes",
+	"SYS_BTN_NO": "No",
+
+	"SYS_HEADER_ACTION": "Action",
 
 	"SYS_LANG_EN": "English",
 	"SYS_LANG_VN": "Vietnamese",
@@ -22,24 +28,57 @@
 
 	"MESS_SYS_001": "Login Successfully",
 	"MESS_SYS_002": "There is no items",
+	"MESS_SYS_003": "Do you want to remove this item ?",
+	"MESS_SYS_004": "Created Successfully",
+	"MESS_SYS_005": "Deleted Successfully",
+	"MESS_SYS_006": "Edited Successfully",
+	"MESS_SYS_007": "Do you want to save timetable ?",
+	"MESS_SYS_008": "Timetable save successfully",
 
 	"BRD_HOME": "Home",
 	"BRD_TIMETABLE": "Timetable",
 	"BRD_TIMETABLE_INDEX": "List Of Doctor",
 	"BRD_TIMETABLE_DOCTOR": "Doctor",
+	"BRD_PROBLEM": "Problem",
+	"BRD_PROBLEM_LIST": "Problem List",
 
 	"MDL_DOCTOR_FIELD_NAME": "Name",
 	"MDL_DOCTOR_FIELD_EMAIL": "Email",
 	"MDL_DOCTOR_FIELD_PHONE": "Phone",
 	"MDL_DOCTOR_FIELD_CREATION_DATE": "Creation Date",
 
+	"MDL_TIMETABLE_FIELD_DOW": "Day Of Week",
+	"MDL_TIMETABLE_FIELD_SERVICE_ID": "Service",
+	"MDL_TIMETABLE_FIELD_FROM_TIME": "From Time",
+	"MDL_TIMETABLE_FIELD_TO_TIME": "To Time",
+	"MDL_TIMETABLE_FIELD_FROM_DATE": "From Date",
+	"MDL_TIMETABLE_FIELD_TO_DATE": "To Date",
+	"MDL_TIMETABLE_FIELD_DESCRIPTION": "Description",
+	"MDL_TIMETABLE_FIELD_WEEK": "Week",
+	"MDL_TIMETABLE_FIELD_SITE": "Site",
+
+	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",
+	"MDL_TIMETABLE_BTN_ADD_DAY": "Add Day",
+
 	"ERR_TIMETABLE_001": "Service is required",
-	"ERR_TIMETABLE_002": "Day is required",
+	"ERR_TIMETABLE_002": "Day Of Week is required",
 	"ERR_TIMETABLE_003": "From Time is required",
 	"ERR_TIMETABLE_004": "To Time is required",
+	"ERR_TIMETABLE_009": "From Date is required",
+	"ERR_TIMETABLE_010": "To Date is required",
 
-	"ERR_TIMETABLE_005": "From Time is not datetime",
-	"ERR_TIMETABLE_006": "To Time is not datetime",
-	"ERR_TIMETABLE_007": "There is also a timetable with same from time",
-	"ERR_TIMETABLE_008": "There is also a timetable with same to time"
+	"ERR_TIMETABLE_005": "From Time is not Time",
+	"ERR_TIMETABLE_006": "To Time is not Time",
+	"ERR_TIMETABLE_011": "From Date is not Date",
+	"ERR_TIMETABLE_012": "To Date is not Date",
+
+	"ERR_TIMETABLE_007": "From Time larger than To Time !!!",
+	"ERR_TIMETABLE_008": "To Time smaller than From Time !!!",
+	"ERR_TIMETABLE_013": "From Date larger than To Date !!!",
+	"ERR_TIMETABLE_014": "To Date smaller than From Date !!!",
+
+	"ERR_TIMETABLE_015": "Week is required",
+	"ERR_TIMETABLE_016": "Site is required",
+	"ERR_TIMETABLE_017": "Week exists",
+	"ERR_TIMETABLE_018": "You do not have any location !!! Please add one"
 }

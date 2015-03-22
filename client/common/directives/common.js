@@ -30,6 +30,56 @@ angular.module('app.directives.common', [])
 	}//end return
 })
 
+.directive('ngNote', function($timeout){
+    return {
+        restrict: 'EA',
+        replace: true,
+        scope: {
+            text: '@',
+            type: '@',
+            preShow: '@',
+            show: '='
+        },
+        template: '<a class="ui {{color}} tag label" ng-click="highlight(show)" style="display: none;">{{text}} <i class="icon close" ng-show="preShow" ng-click="close()"></i></a>',
+        link: function(scope, elem, attrs){
+            scope.color = 'teal';
+            switch(scope.type){
+                case 'success':
+                    scope.color = 'teal';
+                    break;
+                case 'error':
+                    scope.color = 'red';
+                    break;
+            }
+
+            scope.close = function(){
+                elem.css('display', 'none');
+            }
+
+            scope.highlight = function(show){                
+                if(scope.preShow){
+                    if(angular.element('#'+scope.preShow+'_'+show).length > 0){
+                        angular.element('html, body').animate({
+                            scrollTop: angular.element('#'+scope.preShow+'_'+show).offset().top,
+                        }, 200);
+
+                        angular.element('#'+scope.preShow+'_'+show).addClass('active');
+                        $timeout(function(){
+                            angular.element('#'+scope.preShow+'_'+show).removeClass('active');
+                        }, 1000)
+                    }
+                }//end if
+            }
+
+            scope.$watch('show', function(show){
+                if(!S(show).isEmpty()){
+                    elem.css('display', 'inline-block');
+                }
+            })
+        }
+    }
+})
+
 .directive('ngDropdown', function(){
     return {
         restrict: 'A',
@@ -88,7 +138,7 @@ angular.module('app.directives.common', [])
 })
 
 /* SERVICE DIALOG */
-.factory("ModalService", function($document, $compile, $controller, $http, $rootScope, $q, $timeout){
+.factory("ModalService", function($document, $compile, $http, $controller, Restangular, $rootScope, $q, $timeout){
     var body = $document.find("body");
 
     function ModalService(){
@@ -99,14 +149,16 @@ angular.module('app.directives.common', [])
             if(template){
                 deferred.resolve(template);
             }else if(templateUrl){
-                var templateHtml = angular.element("#"+templateUrl).html();
-                if(typeof templateHtml === "undefined"){
+                var templateArray = templateUrl.split('/');
+
+                if(templateArray.length <= 1){
+                    var templateHtml = angular.element("#"+templateUrl).html();
+                    deferred.resolve(templateHtml);
+                }else{
                     $http({method: "GET", url: templateUrl})
                     .then(function(result){
                         deferred.resolve(result.data);
                     })
-                }else{
-                    deferred.resolve(templateHtml);
                 }
             }
 
@@ -164,7 +216,7 @@ angular.module('app.directives.common', [])
                         }
                     });
 
-                    modalElement.modal('show');
+                    angular.element(modalElement[0]).modal('show');
                 }
 
                 // We now have a modal object.
@@ -176,7 +228,7 @@ angular.module('app.directives.common', [])
                 };
 
                 modal.close.then(function(result){
-                    modalElement.modal('hide');
+                    angular.element(modalElement[0]).modal('hide');
                     modalElement.remove();
                     modalScope.$destroy();
                 })
@@ -193,3 +245,43 @@ angular.module('app.directives.common', [])
     return new ModalService();
 })
 /* END SERVICE DIALOG */
+
+/* ADDITIONAL FUNCTION */
+.factory('CommonModel', function($filter){
+    var mainModel = {};
+
+    mainModel.convertToDate = function(date){
+        if(!S(date).isEmpty()){
+            return S(date).right(4).s + '-' + date.substring(3, 5) + '-' + S(date).left(2).s;
+        }
+        return null;
+    }
+
+    mainModel.convertToTime = function(time){
+        if(!S(time).isEmpty()){
+            return S(time).left(2).s+':'+S(time).right(2).s;
+        }
+        return '';
+    }
+
+    mainModel.beforeSave = function(errors){
+        _.forEach(errors, function(error){
+            angular.element('#'+error.field).removeClass('error');
+            angular.element('#'+error.field+'_label').removeClass('visible');
+                angular.element('#'+error.field+'_label').empty();
+        })
+    }
+
+    mainModel.beforeError = function(errors){
+        if(errors){
+            _.forEach(errors, function(error){
+                angular.element('#'+error.field).addClass('error');
+                angular.element('#'+error.field+'_label').addClass('visible');
+                angular.element('#'+error.field+'_label').append($filter('translate')(error.code)+'<br>');
+            })
+        }
+    }
+
+    return mainModel;
+})
+/* END ADDITIONAL FUNCTION */

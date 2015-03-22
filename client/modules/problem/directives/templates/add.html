@@ -1,0 +1,51 @@
+<div class="ui basic segment">
+<form class="ui small form">
+	<div class="four fields">
+		<!-- PATIENT ID -->
+		<div class="required field">
+			<label>Select a Patient</label>
+			<div class="ui small fluid button" ng-model="problem.form.patient_id">
+				Select a Patient
+			</div>
+		</div>
+		<!-- END PATIENT ID -->
+		<!-- FROM DATE -->
+		<div class="required field">
+			<label>From Date</label>
+			<input ng-date-picker ng-model="problem.form.from_date">
+		</div>
+		<!-- END FROM DATE -->
+		<!-- TO DATE -->
+		<div class="required field">
+			<label>To Date</label>
+			<input ng-date-picker ng-model="problem.form.to_date">
+		</div>
+		<!-- END TO DATE -->
+		<!-- ICD10 CODE -->
+		<div class="field">
+			<label>ICD10 Code</label>
+			<input type="text" placeholder="ICD10 Code" ng-model="problem.form.ICD10_code">
+		</div>
+		<!-- END ICD10 CODE -->
+	</div>
+
+	<div class="two fields">
+		<!-- ICPC CODE -->
+		<div class="field">
+			<label>ICPC Code</label>
+			<input type="text" placeholder="ICPC Code" ng-model="problem.form.ICPC_code">
+		</div>
+		<!-- END ICPC CODE -->
+		<!-- NOTES -->
+		<div class="field">
+			<label>Notes</label>
+			<textarea placeholder="Notes" ng-model="problem.form.Notes"></textarea>
+		</div>
+		<!-- END NOTES -->
+	</div>
+
+	<div class="field">
+		<div class="ui small button" ng-click="problem.save()">Save</div>
+	</div>
+</form>
+</div>

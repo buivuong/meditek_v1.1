@@ -1,18 +1,18 @@
 var main = {};
 var S = require('string');
+var moment = require('moment');
 
 main.commonError = function(error, code, res){
 	return res.status(500).json({error: error, code: code});
 }
 
-main.checkDatetime = function(datetime){
-    if(!datetime) return false;
-    var split = datetime.toString().split(' ');
-    if(split) var time = split[1].toString().split(':');
-
+main.checkTime = function(time){
     if(!time) return false;
-    if(time[0] > 24) return false;
-    if(time[1] > 60) return false;
+    var time_split = time.toString().split(':');
+
+    if(!time_split) return false;
+    if(time_split[0] > 24) return false;
+    if(time_split[1] > 60) return false;
 
     return true;
 }
@@ -42,6 +42,25 @@ main.ensureAuthorized = function(req, res, next){
     } else {
         res.sendStatus(403);
     }
+}
+
+main.addInterval = function(time, minutes){
+    var hour = S(time).left(2);
+    var minute = S(time).right(2);
+
+    var seconds = hour*3600+minute*60+minutes*60;
+    return seconds;
+}
+
+main.toHHMM = function (seconds) {
+    var sec_num = parseInt(seconds, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    var time    = hours+':'+minutes;
+    return time;
 }
 
 module.exports = main;

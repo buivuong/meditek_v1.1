@@ -24,6 +24,9 @@ module.exports = {
 		.offset(postData.offset)
 		.then(function(rows){
 			knex('doctors').count('doctor_id as a')
+			.where(knex.raw('IFNULL(NAME,"") LIKE "%'+postData.NAME+'%"'))
+			.where(knex.raw('IFNULL(Email,"") LIKE "%'+postData.Email+'%"'))
+			.where(knex.raw('IFNULL(Phone,"") LIKE "%'+postData.Phone+'%"'))
 			.then(function(a){
 				res.json({data: rows, count: a[0].a});
 			})

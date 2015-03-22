@@ -25,6 +25,7 @@ angular.module('app.loggedIn.doctor.directives.list', [])
 					scope.doctor.error = '';
 					scope.doctor.list = response.data;
 					scope.doctor.count = response.count;
+					scope.doctor.search.page = 1;
 				}, function(error){
 					scope.doctor.loading = false;
 					scope.doctor.error = $filter('translate')(error.data.code);
@@ -54,6 +55,7 @@ angular.module('app.loggedIn.doctor.directives.list', [])
 						break;
 				}//end switch
 				scope.doctor.load();
+				loadPage(1);
 			}
 
 			scope.doctor = {

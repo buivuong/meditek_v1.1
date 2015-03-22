@@ -1,0 +1,73 @@
+<div class="ui modal">
+	<i class="close icon" ng-click="timetable.close(null)"></i>
+    <div class="content">
+	   <form class="ui small form">
+		    <div class="two fields">
+                <!-- CHOOSE DAY -->
+                <div class="required field" id="day_of_Week">
+                    <label>{{'MDL_TIMETABLE_FIELD_DOW' | translate}}</label>
+                    <select ng-model="timetable.form.day_of_Week" 
+                            ng-options="d.value as d.value for d in timetable.options.DAY_OF_WEEK">
+                    </select>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                            id="day_of_Week_label">
+                    </div>
+                </div>
+                <!-- END CHOOSE DAY -->
+                <!-- SERVICE -->
+                <div class="required field" id="SERVICE_ID">
+                    <label>{{'MDL_TIMETABLE_FIELD_SERVICE_ID' | translate}}</label>
+                    <select ng-model="timetable.form.SERVICE_ID" 
+            		        ng-options="s.SERVICE_ID as s.SERVICE_NAME for s in timetable.options.services">
+                    </select>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                		    id="SERVICE_ID_label"></div>
+                </div>
+                <!-- END SERVICE -->
+            </div>
+            <div class="four fields">
+                <!-- FROM TIME -->
+                <div class="required field" id="from_time">
+                    <label>{{'MDL_TIMETABLE_FIELD_FROM_TIME' | translate}}</label>
+                    <input type="text" ui-mask="99:99" ng-model="timetable.form.from_time">
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                        id="from_time_label"></div>
+                </div>
+                <!-- END FROM TIME -->
+                <!-- TO TIME -->
+                <div class="required field" id="to_time">
+                    <label>{{'MDL_TIMETABLE_FIELD_TO_TIME' | translate}}</label>
+                    <input type="text" ui-mask="99:99" ng-model="timetable.form.to_time">
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                         id="to_time_label">
+                    </div>
+                </div>
+                <!-- END TO TIME -->
+                <!-- FROM DATE -->
+                <div class="required field" id="from_date">
+                    <label>{{'MDL_TIMETABLE_FIELD_FROM_DATE' | translate}}</label>
+                    <input type="text" ng-model="timetable.form.from_date" ng-date-picker>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                        id="from_date_label"></div>
+                </div>
+                <!-- END FROM DATE -->
+                <!-- TO DATE -->
+                <div class="required field" id="to_date">
+                    <label>{{'MDL_TIMETABLE_FIELD_TO_DATE' | translate}}</label>
+                    <input type="text" ng-model="timetable.form.to_date" ng-date-picker>
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                        id="to_date_label">
+                    </div>
+                </div>
+                <!-- END TO DATE -->
+            </div>
+            <div class="field">
+                <label>{{'MDL_TIMETABLE_FIELD_DESCRIPTION' | translate}}</label>
+                <textarea ng-model="timetable.form.description"></textarea>
+            </div>
+            <div class="field">
+                <div class="ui small button" ng-click="timetable.save()">{{'SYS_BTN_SAVE' | translate}}</div>
+            </div>
+    	</form>
+    </div> <!-- END CONTENT -->
+</div>

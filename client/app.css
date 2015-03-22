@@ -2,3 +2,31 @@
 	position: absolute;
 	top: -35;	
 }
+
+a{
+	cursor: pointer;
+}
+
+.table-div{
+	width: 100%;
+}
+
+.table-div .header{
+	width: 14%; 
+	display: inline-block;
+	font-weight: bold;
+}
+
+.table-div .table-div-row{
+	width: 100%;
+	padding: 5 5;
+}
+
+.table-div .table-div-row .content{
+	width: 14%;
+	display: inline-block;
+}
+
+.table-div .active{
+	background-color: #2BEABB;
+}
