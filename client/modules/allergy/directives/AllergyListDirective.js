@@ -1,6 +1,6 @@
 angular.module('app.loggedIn.allergy.directives.list', [])
 
-.directive('allergyList', function(AllergyModel, $filter){
+.directive('allergyList', function(AllergyModel, ModalService, $filter){
 	return {
 		restrict: 'EA',
 		templateUrl: 'modules/allergy/directives/templates/list.html',
@@ -47,7 +47,17 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 				scope.allergy.load();
 			}
 
+			var add = function(){
+				ModalService.showModal({
+					templateUrl: 'modules/allergy/dialogs/templates/add.html',
+					controller: 'AllergyDialogAddController'
+				});
+			}
+
 			scope.allergy = {
+				dialog: {
+					add: function(){ add(); }
+				},
 				search: search,
 				error: '',
 				count: 0,

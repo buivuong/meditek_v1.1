@@ -9,5 +9,10 @@ angular.module('app.loggedIn.allergy.models', [])
 		return instanceApi.post({data: data});
 	}
 
+	mainModel.add = function(data){
+		var instanceApi = mainApi.all('add');
+		return instanceApi.post({data: data});
+	}
+
 	return mainModel;
 })

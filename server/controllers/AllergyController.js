@@ -1,5 +1,8 @@
 var knex = require('../connect.js');
 var commonFunction =  require('../function.js');
+var AllergyModel = require('../models/AllergyModel.js');
+var _ = require('lodash');
+var S = require('string');
 
 module.exports = {
 	postList: function(req, res){
@@ -30,5 +33,34 @@ module.exports = {
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
-	}
+	},//end postAdd
+
+	postAdd: function(req, res){
+		var postData = req.body.data;
+
+		var errors = [];
+
+		_.forIn(postData, function(value, field){
+			_.forEach(AllergyModel.errors.create.required, function(field_error){
+				if(field_error.field === field && S(value).isEmpty()){
+					errors.push(field_error);
+					return;
+				}
+			})
+		})
+
+		if(errors.length > 0){
+			res.status(500).json({errors: errors});
+			return;
+		}
+
+		knex('cln_allergies')
+		.insert(postData)
+		.then(function(created){
+			res.json({data: created[0]});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	}//end postAdd
 }

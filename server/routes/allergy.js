@@ -7,4 +7,5 @@ module.exports = function(app){
 	var module = config.defaultUrl+'allergy/';
 
 	app.post(module+'list', commonFunction.ensureAuthorized, AllergyController.postList);
+	app.post(module+'add', commonFunction.ensureAuthorized, AllergyController.postAdd);
 }

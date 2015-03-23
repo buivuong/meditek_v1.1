@@ -2,6 +2,7 @@
 	<div class="ui inverted dimmer" ng-class="{active: allergy.loading}" ng-if="allergy.loading">
 		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
 	</div>
+	<div class="ui mini button" ng-click="allergy.dialog.add()">{{'SYS_BTN_ADD' | translate}}</div>
 	<table class="ui table">
 		<thead>
 			<tr>
@@ -16,6 +17,9 @@
 						ng-show="allergy.search.Creation_date === 'asc'">
 						<i class="sort content ascending icon"></i>
 					</a>
+				</th>
+				<th>
+					{{'SYS_HEADER_ACTION' | translate}}
 				</th>
 			</tr>
 		</thead>
@@ -38,6 +42,14 @@
 			<tr ng-repeat="row in allergy.list" ng-dblclick="onRowClick({row: row})" style="cursor: pointer;">
 				<td>{{row.allergy_name | empty}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+				<td>
+					<a ng-click="site.dialog.editSite(row, s.id)">
+                        <i class="write icon"></i>
+                    </a>
+                    <a ng-click="site.dialog.removeSite(s.id)">
+                        <i class="remove icon"></i>
+                    </a>
+				</td>
 			</tr>
 		</tbody>
 		<tfoot>

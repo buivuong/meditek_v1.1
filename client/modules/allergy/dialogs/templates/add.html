@@ -1,0 +1,22 @@
+<div class="ui modal">
+	<i class="close icon" ng-click="allergy.close(null)"></i>
+    <div class="content">
+	   <form class="ui small form">
+
+            <!-- ALLERGY_NAME -->
+            <div class="field">
+                <div class="required field" id="allergy_name">
+                    <label>{{'MDL_ALLERGY_FIELD_NAME' | translate}}</label>
+                    <input type="text" ng-model="allergy.form.allergy_name">
+                    <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+                        id="allergy_name_label"></div>
+                </div>
+            </div>
+            <!-- END ALLERGY NAME -->
+
+            <div class="field">
+                <div class="ui small button" ng-click="allergy.save(allergy.form)">{{'SYS_BTN_SAVE' | translate}}</div>
+            </div>
+    	</form>
+    </div> <!-- END CONTENT -->
+</div>

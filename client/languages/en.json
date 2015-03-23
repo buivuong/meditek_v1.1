@@ -87,7 +87,7 @@
 	"ERR_TIMETABLE_017": "Week exists",
 	"ERR_TIMETABLE_018": "You do not have any location !!! Please add one",
 
-
+	"ERR_ALLERGY_001": "Allergy Name is required",
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",
