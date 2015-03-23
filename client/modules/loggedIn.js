@@ -6,6 +6,7 @@ angular.module('app.loggedIn', [
     'app.loggedIn.doctor',
     'app.loggedIn.service',
     'app.loggedIn.appointment',
+    'app.loggedIn.allergie',
     'app.loggedIn.problem',
     'app.loggedIn.site'
 ])
