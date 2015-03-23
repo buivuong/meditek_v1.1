@@ -1,0 +1,55 @@
+<div class="ui basic segment">
+	<div class="ui inverted dimmer" ng-class="{active: allergy.loading}" ng-if="allergy.loading">
+		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>{{'MDL_ALLERGY_FIELD_NAME' | translate}}</th>
+				<th>
+					{{'MDL_ALLERGY_FIELD_CREATION_DATE' | translate}}
+					<a ng-click="allergy.sort({field: 'creation_date', by: 'asc'})"
+						ng-show="allergy.search.Creation_date === 'desc'">
+						<i class="sort content descending icon"></i>
+					</a>
+					<a ng-click="allergy.sort({field: 'creation_date', by: 'desc'})"
+						ng-show="allergy.search.Creation_date === 'asc'">
+						<i class="sort content ascending icon"></i>
+					</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="allergy.search.allergy_name" 
+  							ng-enter="allergy.onSearch({field: 'allergy_name', value: allergy.search.allergy_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+			</tr>
+			<tr ng-if="allergy.error" class="negative">
+				<td colspan="4" class="center aligned">{{allergy.error}}</td>
+			</tr>
+			<tr ng-if="allergy.list.length == 0 && !allergy.error">
+				<td colspan="4" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+			</tr>
+			<tr ng-repeat="row in allergy.list" ng-dblclick="onRowClick({row: row})" style="cursor: pointer;">
+				<td>{{row.allergy_name | empty}}</td>
+				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="4">
+					<i>{{allergy.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
+					&nbsp
+					<ng-pagination total="allergy.count" row="allergy.search.limit" ng-model="allergy.search.page"
+						on-change="allergy.loadPage(data)">
+					</ng-pagination>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>

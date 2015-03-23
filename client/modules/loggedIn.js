@@ -8,7 +8,8 @@ angular.module('app.loggedIn', [
     'app.loggedIn.appointment',
     'app.loggedIn.allergie',
     'app.loggedIn.problem',
-    'app.loggedIn.site'
+    'app.loggedIn.site',
+    'app.loggedIn.allergy'
 ])
 
 .config(function ($stateProvider) {
