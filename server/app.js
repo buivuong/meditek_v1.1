@@ -38,6 +38,7 @@ require('./routes/service')(app);
 require('./routes/appointment')(app);
 require('./routes/problem')(app);
 require('./routes/site')(app);
+require('./routes/allergy')(app);
 require('./routes/allergie')(app);
 /* END ROUTES */
 
