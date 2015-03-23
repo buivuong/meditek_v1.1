@@ -14,6 +14,7 @@ angular.module('app.loggedIn.allergy.dialog.add', [])
 
 		AllergyModel.add(postData)
 		.then(function(response){
+			$scope.allergy.close(response.data);
 
 		}, function(error){
 			$scope.allergy.errors = angular.copy(error.data.errors);

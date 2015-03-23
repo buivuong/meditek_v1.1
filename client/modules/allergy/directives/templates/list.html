@@ -2,7 +2,6 @@
 	<div class="ui inverted dimmer" ng-class="{active: allergy.loading}" ng-if="allergy.loading">
 		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
 	</div>
-	<div class="ui mini button" ng-click="allergy.dialog.add()">{{'SYS_BTN_ADD' | translate}}</div>
 	<table class="ui table">
 		<thead>
 			<tr>
@@ -14,7 +13,7 @@
 						<i class="sort content descending icon"></i>
 					</a>
 					<a ng-click="allergy.sort({field: 'creation_date', by: 'desc'})"
-						ng-show="allergy.search.Creation_date === 'asc'">
+					ng-show="allergy.search.Creation_date === 'asc'">
 						<i class="sort content ascending icon"></i>
 					</a>
 				</th>
@@ -32,29 +31,30 @@
   						<i class="search icon"></i>
 					</div>
 				</td>
+				<td>
+				</td>
+				<td>
+					<a><i class="add user icon" ng-click="allergy.dialog.add()"></i></a>
+				</td>
 			</tr>
 			<tr ng-if="allergy.error" class="negative">
-				<td colspan="4" class="center aligned">{{allergy.error}}</td>
+				<td colspan="5" class="center aligned">{{allergy.error}}</td>
 			</tr>
 			<tr ng-if="allergy.list.length == 0 && !allergy.error">
-				<td colspan="4" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+				<td colspan="5" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
 			</tr>
-			<tr ng-repeat="row in allergy.list" ng-dblclick="onRowClick({row: row})" style="cursor: pointer;">
-				<td>{{row.allergy_name | empty}}</td>
+			<tr ng-repeat="row in allergy.list" style="cursor: pointer;">
+				<td>{{row.allergy_name}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
 				<td>
-					<a ng-click="site.dialog.editSite(row, s.id)">
-                        <i class="write icon"></i>
-                    </a>
-                    <a ng-click="site.dialog.removeSite(s.id)">
-                        <i class="remove icon"></i>
-                    </a>
+					<a><i class="edit icon" ng-click="allergy.dialog.edit(row.allergy_id)"></i></a>
+					<a><i class="remove icon" ng-click="allergy.dialog.removeAllergy(row.allergy_id)"></i></a>
 				</td>
 			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
-				<th colspan="4">
+				<th colspan="5">
 					<i>{{allergy.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
 					&nbsp
 					<ng-pagination total="allergy.count" row="allergy.search.limit" ng-model="allergy.search.page"

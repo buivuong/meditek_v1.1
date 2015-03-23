@@ -8,4 +8,7 @@ module.exports = function(app){
 
 	app.post(module+'list', commonFunction.ensureAuthorized, AllergyController.postList);
 	app.post(module+'add', commonFunction.ensureAuthorized, AllergyController.postAdd);
+	app.post(module + 'byid',commonFunction.ensureAuthorized,AllergyController.postByid);
+	app.post(module +'edit',commonFunction.ensureAuthorized,AllergyController.postEdit);
+	app.post(module +'remove',commonFunction.ensureAuthorized,AllergyController.postRemove);
 }

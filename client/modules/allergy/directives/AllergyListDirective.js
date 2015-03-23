@@ -4,6 +4,9 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 	return {
 		restrict: 'EA',
 		templateUrl: 'modules/allergy/directives/templates/list.html',
+		scope: {
+			options: '='
+		},
 		link: function(scope, elem, attrs){
 			var search = {
 				page: 1,
@@ -54,9 +57,47 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 				});
 			}
 
+			var edit = function(id){
+				ModalService.showModal({
+					resolve: {options: scope.options, id: id},
+     				templateUrl: 'modules/allergy/dialogs/templates/edit.html',
+					controller: 'AllergyDialogEditController'
+    			})
+    			.then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.allergy.load();
+    					}
+    				});
+    			})
+			}
+
+			var removeAllergy = function(id){
+				ModalService.showModal({
+					resolve: {id: id},
+					templateUrl: 'common/views/remove.html',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						console.log(result);
+						if(result){
+							AllergyModel.remove(result).then(function(deleted){
+								scope.allergy.load();
+							}, function(error){});
+						}
+					})
+				})
+			}
+
 			scope.allergy = {
 				dialog: {
-					add: function(){ add(); }
+					add: function(){ add(); },
+					edit:function(id){edit(id);},
+					removeAllergy:function(id){removeAllergy(id);}
 				},
 				search: search,
 				error: '',

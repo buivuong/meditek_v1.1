@@ -62,5 +62,65 @@ module.exports = {
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
-	}//end postAdd
+	},//end postAdd
+
+	postByid: function(req, res){
+		var postData = req.body.data;
+
+		knex
+		.column('*')
+		.select()
+		.from('cln_allergies')
+		.where('allergy_id', postData.allergy_id)
+		.then(function(rows){
+			if(rows.length > 0)
+				res.json({data: rows[0]});
+			else{
+				commonFunction.commonFunction(error, 'ERR_SYS_006', res);
+				return;
+			}
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	},//end byId
+
+	postEdit: function(req,res){
+		var postData = req.body.data;
+		var id = postData.allergy_id;
+		console.log(id);
+		var errors = [];
+
+		if(errors.length > 0){
+			res.status(500).json({errors: errors});
+			return;
+		}
+
+		// EDIT OPERATION
+		knex('cln_allergies')
+		.where({
+			allergy_id:id
+		})
+		.update(postData)
+		.then(function(updated){
+			res.json({data: postData.id});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	},//end postEdit
+
+	postRemove: function(req, res){
+		var postData = req.body.data;
+		knex('cln_allergies')
+		.where({
+			allergy_id: postData})
+		.del()
+		.then(function(deleted){
+			res.json({data: postData.id});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	}
 }
