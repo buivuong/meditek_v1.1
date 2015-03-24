@@ -9,8 +9,8 @@ angular.module('app.loggedIn', [
     'app.loggedIn.allergie',
     'app.loggedIn.problem',
     'app.loggedIn.site',
-
     'app.loggedIn.allergy',
+    'app.loggedIn.patient'
 
     'app.loggedIn.medicine'
 

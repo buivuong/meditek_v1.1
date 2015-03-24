@@ -1,0 +1,112 @@
+<div class="ui basic segment">
+	<div class="ui inverted dimmer" ng-class="{active: patient.loading}" ng-if="patient.loading">
+		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>{{'MDL_PATIENT_FIRST_NAME' | translate}}</th>
+				<th>{{'MDL_PATIENT_SUR_NAME' | translate}}</th>
+				<th>{{'MDL_PATIENT_TITLE' | translate}}</th>
+				<th>{{'MDL_PATIENT_STATE' | translate}}</th>
+				<th>
+					{{'MDL_PATIENT_DOB' | translate}}
+					<a ng-click="patient.sort({field: 'DOB', by: 'asc'})"
+						ng-show="patient.search.DOB === 'desc'">
+						<i class="sort content descending icon"></i>
+					</a>
+					<a ng-click="patient.sort({field: 'DOB', by: 'desc'})"
+					ng-show="patient.search.DOB === 'asc'">
+						<i class="sort content ascending icon"></i>
+					</a>
+				</th>
+				<th>{{'MDL_PATIENT_SEX' | translate}}</th>
+				<th>
+					{{'MDL_PATIENT_CREATION_DATE' | translate}}
+					<a ng-click="patient.sort({field: 'creation_date', by: 'asc'})"
+						ng-show="patient.search.Creation_date === 'desc'">
+						<i class="sort content descending icon"></i>
+					</a>
+					<a ng-click="patient.sort({field: 'creation_date', by: 'desc'})"
+					ng-show="patient.search.Creation_date === 'asc'">
+						<i class="sort content ascending icon"></i>
+					</a>
+				</th>
+				<th>
+					{{'SYS_HEADER_ACTION' | translate}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="patient.search.First_name" 
+  							ng-enter="patient.onSearch({field: 'First_name', value: patient.search.First_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="patient.search.Sur_name" 
+  							ng-enter="patient.onSearch({field: 'Sur_name', value: patient.search.Sur_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="patient.search.Title" 
+  							ng-enter="patient.onSearch({field: 'Title', value: patient.search.Title})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="patient.search.State" 
+  							ng-enter="patient.onSearch({field: 'State', value: patient.search.State})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="patient.search.Sex" 
+  							ng-enter="patient.onSearch({field: 'Sex', value: patient.search.Sex})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+				</td>
+			</tr>
+			<tr ng-if="patient.error" class="negative">
+				<td colspan="8" class="center aligned">{{patient.error}}</td>
+			</tr>
+			<tr ng-if="patient.list.length == 0 && !patient.error">
+				<td colspan="8" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+			</tr>
+			<tr ng-repeat="row in patient.list" style="cursor: pointer;">
+				<td>{{row.First_name |empty }}</td>
+				<td>{{row.Sur_name |empty }}</td>
+				<td>{{row.Title | empty}}</td>
+				<td>{{row.State | empty}}</td>
+				<td>{{row.DOB | date: 'DD/MM/YYYY'}}</td>
+				<td>{{row.Sex | empty}}</td>
+				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+				<td>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="8">
+					<i>{{patient.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
+					&nbsp
+					<ng-pagination total="patient.count" row="patient.search.limit" ng-model="patient.search.page"
+						on-change="patient.loadPage(data)">
+					</ng-pagination>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>

@@ -2,6 +2,7 @@ angular.module('app.loggedIn.allergy.dialog.edit', [])
 
 .controller('AllergyDialogEditController', function($scope, localStorageService, close, $stateParams, CommonModel, AllergyModel, $filter){
 	var save = function(){
+		
 		CommonModel.beforeSave($scope.allergy.errors);
 		var postData = angular.copy($scope.allergy.form);
 		postData.Last_updated_by = localStorageService.get('user').id;

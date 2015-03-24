@@ -39,7 +39,7 @@ module.exports = {
 		var postData = req.body.data;
 
 		var errors = [];
-
+		
 		_.forIn(postData, function(value, field){
 			_.forEach(AllergyModel.errors.create.required, function(field_error){
 				if(field_error.field === field && S(value).isEmpty()){
@@ -85,11 +85,39 @@ module.exports = {
 		})
 	},//end byId
 
+	postIdAllergy: function(req, res){
+		var postData = req.body.data;
+		var varPatient_id = knex('cln_patient_allergies').where('allergy_id', postData.allergy_id);
+		knex
+		.select('*')
+		.from('cln_patients')
+		.whereIn('patient_id', varPatient_id)
+		.then(function(rows){
+			if(rows.length > 0)
+				res.json({data: rows[0]});
+			else{
+				commonFunction.commonFunction(error, 'ERR_SYS_006', res);
+				return;
+			}
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+
+		},//end postIdAllergy
+
 	postEdit: function(req,res){
 		var postData = req.body.data;
 		var id = postData.allergy_id;
-		console.log(id);
 		var errors = [];
+		_.forIn(postData, function(value, field){
+			_.forEach(AllergyModel.errors.create.required, function(field_error){
+				if(field_error.field === field && S(value).isEmpty()){
+					errors.push(field_error);
+					return;
+				}
+			})
+		})
 
 		if(errors.length > 0){
 			res.status(500).json({errors: errors});

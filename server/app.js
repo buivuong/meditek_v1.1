@@ -41,6 +41,7 @@ require('./routes/site')(app);
 require('./routes/allergy')(app);
 require('./routes/allergie')(app);
 require('./routes/medicine')(app);
+require('./routes/patient')(app);
 
 /* END ROUTES */
 

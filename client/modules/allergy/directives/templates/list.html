@@ -1,4 +1,5 @@
 <div class="ui basic segment">
+	<div class="mini ui button" ng-click="allergy.dialog.add()">{{'SYS_BTN_ADD' | translate}}</div>
 	<div class="ui inverted dimmer" ng-class="{active: allergy.loading}" ng-if="allergy.loading">
 		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
 	</div>
@@ -34,7 +35,6 @@
 				<td>
 				</td>
 				<td>
-					<a><i class="add user icon" ng-click="allergy.dialog.add()"></i></a>
 				</td>
 			</tr>
 			<tr ng-if="allergy.error" class="negative">
@@ -49,6 +49,7 @@
 				<td>
 					<a><i class="edit icon" ng-click="allergy.dialog.edit(row.allergy_id)"></i></a>
 					<a><i class="remove icon" ng-click="allergy.dialog.removeAllergy(row.allergy_id)"></i></a>
+					<a><i class="list icon" ng-click="allergy.listPatient(row.allergy_id)"></i></a>
 				</td>
 			</tr>
 		</tbody>

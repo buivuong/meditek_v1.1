@@ -60,12 +60,19 @@
 	"MDL_TIMETABLE_FIELD_WEEK": "Week",
 	"MDL_TIMETABLE_FIELD_SITE": "Site",
 
+	"MDL_PATIENT_FIRST_NAME" : "First Name",
+	"MDL_PATIENT_SUR_NAME" : "Sur Name",
+	"MDL_PATIENT_TITLE"  : "Title",
+	"MDL_PATIENT_STATE" : "State",
+	"MDL_PATIENT_DOB" : "DOB",
+	"MDL_PATIENT_SEX" : "Sex",
+	"MDL_PATIENT_CREATION_DATE" :"Creation Date",
+
 	"MDL_ALLERGY_FIELD_NAME": "Allergy Name",
 	"MDL_ALLERGY_FIELD_CREATION_DATE": "Creation Date",
 
 	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",
 	"MDL_TIMETABLE_BTN_ADD_DAY": "Add Day",
-
 
 	"ERR_TIMETABLE_001": "Service is required",
 	"ERR_TIMETABLE_002": "Day Of Week is required",

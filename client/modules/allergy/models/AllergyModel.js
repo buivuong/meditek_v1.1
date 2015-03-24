@@ -27,5 +27,10 @@ angular.module('app.loggedIn.allergy.models', [])
 		return instanceApi.post({data: data});
 	}
 
+	mainModel.idAllergy = function(data){
+		var instanceApi = mainApi.all('idAllergy');
+		return instanceApi.post({data: data});
+	}
+
 	return mainModel;
 })
