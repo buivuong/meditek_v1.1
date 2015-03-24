@@ -1,0 +1,45 @@
+<div class="ui modal">
+	<i class="close icon" ng-click="medicine.close(null)"></i>
+
+	<div class="content">
+		<form class="ui small form">
+			<div class="two fields">
+				<!-- MEDICINE NAME -->
+				<div class="field">
+					<div class="required field" id="medicine_name">
+						<label>Medicine name</label>
+						<input type="text" ng-model="medicine.form.medicine_name">
+						<div class="ui tiny red pointing prompt label transition" style="display: none;" 
+	                        id="medicine_name_label"></div>
+					</div>
+				</div>
+				<!-- MEDICINE NAME -->
+
+				<!-- MEDICINE PRICE -->
+				<div class="required field">
+					<label>Medicine price per unit</label>
+					<div class="two fields">
+						<div class="field">
+							<input type="number" ng-model="medicine.form.medicine_price">
+							<!-- <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+	                        id="medicine_price_label"></div> -->
+						</div>
+						<div class="field">
+							<select ng-model="medicine.form.medicine_unit">
+								<option id="bt">bottle</option>
+								<option id="bx">box</option>
+							</select>
+							<!-- <div class="ui tiny red pointing prompt label transition" style="display: none;" 
+	                        id="medicine_unit_label"></div> -->
+						</div>
+					</div>
+				</div>
+				<!-- MEDICINE PRICE -->
+			</div>
+
+			<div class="field">
+                <div class="ui small button" ng-click="medicine.save(medicine.form)" >{{'SYS_BTN_SAVE' | translate}}</div>
+            </div>
+		</form>
+	</div>
+<div>

@@ -40,6 +40,8 @@ require('./routes/problem')(app);
 require('./routes/site')(app);
 require('./routes/allergy')(app);
 require('./routes/allergie')(app);
+require('./routes/medicine')(app);
+
 /* END ROUTES */
 
 var server = app.listen(3001, function(){
