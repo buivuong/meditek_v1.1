@@ -16,19 +16,20 @@ angular.module('app.loggedIn.medicine.dialog.add',[])
 
 		}, function(error){
 			$scope.medicine.errors = angular.copy(error.data.errors);
+			
 			CommonModel.beforeError($scope.medicine.errors);
 		})
 	}
 
-	$scope.logcheck = function(){
-		console.log($scope.medicine);
-	}
+	
 
 	$scope.medicine = {
 		close: function(params){ closeDialog(params); },
 		save: function(form){ save(form); },
 		form: {
 			medicine_name: '',
+			medicine_price: null,
+			medicine_unit: '',
 			isEnable: 1
 		},
 		errors: [],

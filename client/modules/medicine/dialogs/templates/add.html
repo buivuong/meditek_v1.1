@@ -1,13 +1,12 @@
 <div class="ui modal">
 	<i class="close icon" ng-click="medicine.close(null)"></i>
-	<button ng-click="logcheck();"></button>
 	<div class="content">
 		<form class="ui small form">
 			<div class="two fields">
 				<!-- MEDICINE NAME -->
 				<div class="field">
 					<div class="required field" id="medicine_name">
-						<label>Medicine name</label>
+						<label>{{'MDL_MEDICINE_FIELD_NAME' | translate}}</label>
 						<input type="text" ng-model="medicine.form.medicine_name">
 						<div class="ui tiny red pointing prompt label transition" style="display: none;" 
 	                        id="medicine_name_label"></div>
@@ -17,19 +16,19 @@
 
 				<!-- MEDICINE PRICE -->
 				<div class="required field">
-					<label>Medicine price per unit</label>
+					<label>{{'MDL_MEDICINE_FIELD_PRICEPERUNIT' | translate}}</label>
 					<div class="two fields">
-						<div class="field">
+						<div class="required field" id="medicine_price">
 							<input type="number" ng-model="medicine.form.medicine_price">
-							<!-- <div class="ui tiny red pointing prompt label transition" style="display: none;" 
-	                        id="medicine_price_label"></div> -->
+							<div class="ui tiny red pointing prompt label transition" style="display: none;" 
+	                        id="medicine_price_label"></div>
 						</div>
-						<div class="field">
+						<div class="required field" id="medicine_unit">
 							<select ng-model="medicine.form.medicine_unit" ng-options="unit.name as unit.id for unit in medicine.units">
 								
 							</select>
-							<!-- <div class="ui tiny red pointing prompt label transition" style="display: none;" 
-	                        id="medicine_unit_label"></div> -->
+							<div class="ui tiny red pointing prompt label transition" style="display: none;" 
+	                        id="medicine_unit_label"></div>
 						</div>
 					</div>
 				</div>

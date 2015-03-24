@@ -43,6 +43,7 @@
 	"BRD_PROBLEM_LIST": "Problem List",
 	"BRD_APPOINTMENT": "Appointment",
 	"BRD_APPOINTMENT_CALENDAR": "Calendar",
+	"BRD_MEDICINES" : "Medicines",
 
 	"MDL_DOCTOR_FIELD_NAME": "Name",
 	"MDL_DOCTOR_FIELD_EMAIL": "Email",
@@ -64,6 +65,7 @@
 
 	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",
 	"MDL_TIMETABLE_BTN_ADD_DAY": "Add Day",
+
 
 	"ERR_TIMETABLE_001": "Service is required",
 	"ERR_TIMETABLE_002": "Day Of Week is required",
@@ -88,6 +90,15 @@
 	"ERR_TIMETABLE_018": "You do not have any location !!! Please add one",
 
 	"ERR_ALLERGY_001": "Allergy Name is required",
+
+	"TBL_HEADER_PRICE_PERUNIT": "Price per unit",
+
+	"MDL_MEDICINE_FIELD_NAME": "Medicine name",
+	"MDL_MEDICINE_FIELD_PRICEPERUNIT" : "Medicine price per unit",
+
+	"ERR_MEDICINE_001" : "Medicine name is required",
+	"ERR_MEDICINE_002" : "Medicine price is required",
+	"ERR_MEDICINE_003" : "Medicine unit type is required",
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",

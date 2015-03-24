@@ -20,6 +20,7 @@ angular.module('app.loggedIn.medicine.dialog.edit',[])
 			$scope.medicine.close(response.data);
 		}, function(error){
 			$scope.medicine.errors = angular.copy(error.data.errors);
+			console.log('those are errors', $scope.medicine.errors);
 			CommonModel.beforeError($scope.medicine.errors);
 		})
 	}
@@ -30,6 +31,9 @@ angular.module('app.loggedIn.medicine.dialog.edit',[])
 		save: function(form){ save(form); },
 		form: {
 			medicine_name: '',
+			medicine_price: null,
+			medicine_unit: '',
+			isEnable: 1
 		},
 		errors: [],
 		units: CommonModel.getMedicineUnit()
