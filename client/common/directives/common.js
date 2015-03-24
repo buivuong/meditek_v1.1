@@ -282,6 +282,15 @@ angular.module('app.directives.common', [])
         }
     }
 
+    mainModel.getMedicineUnit = function(){
+        return [
+            {id:"bottle", name:"bottle"},
+            {id:"tablet", name:"tablet"},
+            {id:"box", name:"box"},
+            {id:"mg", name:"mg"},
+        ]
+    }
+
     return mainModel;
 })
 /* END ADDITIONAL FUNCTION */

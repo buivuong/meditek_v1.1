@@ -53,7 +53,15 @@ angular.module('app.loggedIn.medicine.directive.list',[])
 				ModalService.showModal({
 					templateUrl: 'modules/medicine/dialogs/templates/add.html',
 					controller: 'MedicineAddDialogController'
-				});
+				})
+				.then(function(modal){
+    				modal.close.then(function(result){
+    					console.log('this is result', result);
+    					if(result) {
+    						scope.medicine.load();
+    					}
+    				});
+    			});
 			}
 
 			var edit = function(id){

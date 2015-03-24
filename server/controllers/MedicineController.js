@@ -54,7 +54,7 @@ module.exports = {
 		knex('cln_medicines')
 		.insert(postData)
 		.then(function(result){
-			res.json({status:'success'});
+			res.json({data:result});
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
@@ -114,7 +114,7 @@ module.exports = {
 		})
 		.update(postData)
 		.then(function(result){
-			res.json({status:'success'});
+			res.json({data:result});
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);

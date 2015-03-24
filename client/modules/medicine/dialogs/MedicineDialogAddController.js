@@ -20,6 +20,10 @@ angular.module('app.loggedIn.medicine.dialog.add',[])
 		})
 	}
 
+	$scope.logcheck = function(){
+		console.log($scope.medicine);
+	}
+
 	$scope.medicine = {
 		close: function(params){ closeDialog(params); },
 		save: function(form){ save(form); },
@@ -27,6 +31,7 @@ angular.module('app.loggedIn.medicine.dialog.add',[])
 			medicine_name: '',
 			isEnable: 1
 		},
-		errors: []
+		errors: [],
+		units: CommonModel.getMedicineUnit(),
 	}
 });

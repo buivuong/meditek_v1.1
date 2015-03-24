@@ -31,7 +31,8 @@ angular.module('app.loggedIn.medicine.dialog.edit',[])
 		form: {
 			medicine_name: '',
 		},
-		errors: []
+		errors: [],
+		units: CommonModel.getMedicineUnit()
 	}
 
 	//INIT

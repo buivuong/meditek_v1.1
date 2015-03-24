@@ -1,6 +1,6 @@
 <div class="ui modal">
 	<i class="close icon" ng-click="medicine.close(null)"></i>
-
+	<button ng-click="logcheck();"></button>
 	<div class="content">
 		<form class="ui small form">
 			<div class="two fields">
@@ -25,9 +25,8 @@
 	                        id="medicine_price_label"></div> -->
 						</div>
 						<div class="field">
-							<select ng-model="medicine.form.medicine_unit">
-								<option id="bt">bottle</option>
-								<option id="bx">box</option>
+							<select ng-model="medicine.form.medicine_unit" ng-options="unit.name as unit.id for unit in medicine.units">
+								
 							</select>
 							<!-- <div class="ui tiny red pointing prompt label transition" style="display: none;" 
 	                        id="medicine_unit_label"></div> -->
