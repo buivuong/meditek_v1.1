@@ -54,7 +54,14 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 				ModalService.showModal({
 					templateUrl: 'modules/allergy/dialogs/templates/add.html',
 					controller: 'AllergyDialogAddController'
-				});
+				})
+				.then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.allergy.load();
+    					}
+    				});
+    			})
 			}
 
 			var edit = function(id){

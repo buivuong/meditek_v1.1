@@ -103,7 +103,7 @@ module.exports = {
 		})
 		.update(postData)
 		.then(function(updated){
-			res.json({data: postData.id});
+			res.json({data: id});
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
