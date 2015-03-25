@@ -1,0 +1,68 @@
+<div class="ui basic segment">
+	<div class="ui inverted dimmer" ng-class="{active: medicine.loading}" ng-if="medicine.loading">
+		<div class="ui Mastertext loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>{{'TBL_LBL_NAME' | translate}}</th>
+				<th>{{'TBL_HEADER_PRICE_PERUNIT' | translate}}</th>
+				<th>
+					{{'TBL_LBL_CREATION_DATE' | translate}}
+					<a style="cursor: pointer;" ng-click="medicine.sort({field: 'creation_date', by: 'asc'})"
+						ng-show="medicine.search.Creation_date === 'desc'">
+						<i class="sort content descending icon"></i>
+					</a>
+					<a style="cursor: pointer;" ng-click="medicine.sort({field: 'creation_date', by: 'desc'})"
+						ng-show="medicine.search.Creation_date === 'asc'">
+						<i class="sort content ascending icon"></i>
+					</a>
+				</th>
+				<th>{{'SYS_HEADER_ACTION' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="medicine.search.medicine_name" 
+  							ng-enter="medicine.onSearch({field: 'medicine_name', value: medicine.search.medicine_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+				<td>
+					<a><i class="add user icon" ng-click="medicine.dialog.add()"></i></a>
+				</td>
+			</tr>
+			<tr ng-if="medicine.error" class="negative">
+				<td colspan="4" class="center aligned">{{medicine.error}}</td>
+			</tr>
+			<tr ng-if="medicine.list.length == 0">
+				<td colspan="4" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+			</tr>
+			<tr ng-repeat="row in medicine.list" style="cursor: pointer;" >
+				<td>{{row.medicine_name}}</td>
+				<td>{{row.medicine_price}}/{{row.medicine_unit}}</td>
+				
+				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>			<td>
+					<a><i class="edit icon" ng-click="medicine.dialog.edit(row.medicine_id)"></i></a>
+					<a><i class="remove icon" ng-click="medicine.dialog.removeMedicine(row.medicine_id)"></i></a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="4">
+					<i>{{medicine.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
+					&nbsp
+					<ng-pagination total="medicine.count" row="medicine.search.limit" ng-model="medicine.search.page"
+						on-change="medicine.loadPage(data)">
+					</ng-pagination>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+<div>

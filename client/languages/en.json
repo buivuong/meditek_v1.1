@@ -43,6 +43,7 @@
 	"BRD_PROBLEM_LIST": "Problem List",
 	"BRD_APPOINTMENT": "Appointment",
 	"BRD_APPOINTMENT_CALENDAR": "Calendar",
+	"BRD_MEDICINES" : "Medicines",
 
 	"MDL_DOCTOR_FIELD_NAME": "Name",
 	"MDL_DOCTOR_FIELD_EMAIL": "Email",
@@ -58,6 +59,14 @@
 	"MDL_TIMETABLE_FIELD_DESCRIPTION": "Description",
 	"MDL_TIMETABLE_FIELD_WEEK": "Week",
 	"MDL_TIMETABLE_FIELD_SITE": "Site",
+
+	"MDL_PATIENT_FIRST_NAME" : "First Name",
+	"MDL_PATIENT_SUR_NAME" : "Sur Name",
+	"MDL_PATIENT_TITLE"  : "Title",
+	"MDL_PATIENT_STATE" : "State",
+	"MDL_PATIENT_DOB" : "DOB",
+	"MDL_PATIENT_SEX" : "Sex",
+	"MDL_PATIENT_CREATION_DATE" :"Creation Date",
 
 	"MDL_ALLERGY_FIELD_NAME": "Allergy Name",
 	"MDL_ALLERGY_FIELD_CREATION_DATE": "Creation Date",
@@ -95,6 +104,7 @@
 
 	"ERR_ALLERGY_001": "Allergy Name is required",
 
+<<<<<<< HEAD
 	"ERR_PROBLEM_001": "Patient Name is selected",
 	"ERR_PROBLEM_002": "From Date is required",
 	"ERR_PROBLEM_003": "To Date is required",
@@ -104,6 +114,16 @@
 	"ERR_PROBLEM_007": "To Date is not Date",
 	"ERR_PROBLEM_008": "From Date larger than To Date",
 	"ERR_PROBLEM_009": "To Date smaller than From Date",
+=======
+	"TBL_HEADER_PRICE_PERUNIT": "Price per unit",
+
+	"MDL_MEDICINE_FIELD_NAME": "Medicine name",
+	"MDL_MEDICINE_FIELD_PRICEPERUNIT" : "Medicine price per unit",
+
+	"ERR_MEDICINE_001" : "Medicine name is required",
+	"ERR_MEDICINE_002" : "Medicine price is required",
+	"ERR_MEDICINE_003" : "Medicine unit type is required",
+>>>>>>> origin/master
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",

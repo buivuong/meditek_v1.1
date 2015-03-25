@@ -14,4 +14,14 @@ angular.module('app.loggedIn.allergy', [
 			}//end main-content
 		}//end views
 	})
+
+	.state('loggedIn.allergy.listpatient', {
+		url: '/:allergyId/patient',
+		views: {
+			'main-content@loggedIn': {
+				templateUrl: 'modules/allergy/views/listPatient.html',
+				controller: 'AllergyListPatientController'
+			}
+		}//end views
+	})
 })

@@ -1,6 +1,6 @@
 angular.module('app.loggedIn.allergy.directives.list', [])
 
-.directive('allergyList', function(AllergyModel, ModalService, $filter){
+.directive('allergyList', function(AllergyModel, ModalService, $filter,$state){
 	return {
 		restrict: 'EA',
 		templateUrl: 'modules/allergy/directives/templates/list.html',
@@ -90,7 +90,6 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 					}
 				}).then(function(modal){
 					modal.close.then(function(result){
-						console.log(result);
 						if(result){
 							AllergyModel.remove(result).then(function(deleted){
 								scope.allergy.load();
@@ -99,7 +98,9 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 					})
 				})
 			}
-
+			var listPatient = function(id){
+				$state.go('loggedIn.allergy.listpatient',{allergyId:id});
+			}
 			scope.allergy = {
 				dialog: {
 					add: function(){ add(); },
@@ -111,10 +112,11 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 				count: 0,
 				loading: false,
 				list: [],
+				listPatient:function(id){listPatient(id);},
 				load: function(){ load(); },
 				loadPage: function(page){ loadPage(page); },
 				onSearch: function(option){ onSearch(option)},
-				sort: function(option){ sort(option) }
+				sort: function(option){ sort(option)}
 			}
 
 			/* LOAD FIRST */

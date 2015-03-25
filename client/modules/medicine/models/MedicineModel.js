@@ -1,8 +1,7 @@
-angular.module('app.loggedIn.allergy.models', [])
-
-.factory('AllergyModel', function(Restangular){
+angular.module('app.loggedIn.medicine.models',[])
+.factory('MedicineModel', function(Restangular){
 	var mainModel = {};
-	var mainApi = Restangular.all('allergy');
+	var mainApi = Restangular.all('medicine');
 
 	mainModel.list = function(data){
 		var instanceApi = mainApi.all('list');
@@ -18,19 +17,16 @@ angular.module('app.loggedIn.allergy.models', [])
 		var instanceApi = mainApi.all('byid');
 		return instanceApi.post({data: data});
 	}
+
 	mainModel.edit = function(data){
 		var instanceApi = mainApi.all('edit');
 		return instanceApi.post({data: data});
 	}
+
 	mainModel.remove = function(data){
 		var instanceApi = mainApi.all('remove');
 		return instanceApi.post({data: data});
 	}
 
-	mainModel.idAllergy = function(data){
-		var instanceApi = mainApi.all('idAllergy');
-		return instanceApi.post({data: data});
-	}
-
 	return mainModel;
-})
+});

@@ -34,7 +34,7 @@ angular.module('app', [
 
 	// ANGULAR TRANSLATE
     $translateProvider.useStaticFilesLoader({
-        prefix: '/manh/test/client/languages/',
+        prefix: "/meditek_v1.1/client/languages/",
         suffix: ".json"
     });
 
