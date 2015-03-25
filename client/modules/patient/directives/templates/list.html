@@ -32,9 +32,6 @@
 						<i class="sort content ascending icon"></i>
 					</a>
 				</th>
-				<th>
-					{{'SYS_HEADER_ACTION' | translate}}
-				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -76,8 +73,6 @@
   						<i class="search icon"></i>
 					</div>
 				</td>
-				<td>
-				</td>
 			</tr>
 			<tr ng-if="patient.error" class="negative">
 				<td colspan="8" class="center aligned">{{patient.error}}</td>
@@ -90,11 +85,9 @@
 				<td>{{row.Sur_name |empty }}</td>
 				<td>{{row.Title | empty}}</td>
 				<td>{{row.State | empty}}</td>
-				<td>{{row.DOB | date: 'DD/MM/YYYY'}}</td>
+				<td ng-class="{negative: !row.DOB}">{{row.DOB | date: 'DD/MM/YYYY'}}</td>
 				<td>{{row.Sex | empty}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
-				<td>
-				</td>
 			</tr>
 		</tbody>
 		<tfoot>

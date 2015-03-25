@@ -67,8 +67,24 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 				scope.patient.load();
 			}
 
+			var choosePatient = function(){
+				ModalService.showModal({
+     				templateUrl: 'modules/allergy/dialogs/templates/listPatient.html',
+					controller: 'AllergyDialogListPatientController'
+    			})
+    			.then(function(modal){
+    				modal.close.then(function(result){
+    					if(result) {
+    						scope.patient.load();
+    					}
+    				});
+    			})
+			}
 			
 			scope.patient = {
+				dialog: {
+					choosePatient: function(){ choosePatient(); }
+				},
 				search: search,
 				error: '',
 				count: 0,
@@ -77,7 +93,8 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 				load: function(){ load(); },
 				loadPage: function(page){ loadPage(page); },
 				onSearch: function(option){ onSearch(option)},
-				sort: function(option){ sort(option) }
+				sort: function(option){ sort(option) },
+				choosePatient :function(){choosePatient()}
 			}
 
 			/* LOAD FIRST */

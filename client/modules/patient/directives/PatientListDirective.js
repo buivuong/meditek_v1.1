@@ -5,19 +5,26 @@ angular.module('app.loggedIn.patient.directives.list', [])
 		restrict: 'EA',
 		templateUrl: 'modules/patient/directives/templates/list.html',
 		scope: {
-			options: '='
+			options: '=',
+			limit: '@'
 		},
 		link: function(scope, elem, attrs){
+			if(S(scope.limit).isEmpty())
+			{
+				scope.limit = 20;
+			}
+
 			var search = {
 				page: 1,
 				offset: 0,
-				limit: 20,
+				limit: parseInt(scope.limit),
 				First_name: '',
 				Sur_name:'',
 				Title:'',
 				Sex:'',
 				State :'',
-				Creation_date: 'desc'
+				Creation_date: 'desc',
+				DOB : 'desc'
 			}
 
 			var load = function(){
@@ -56,8 +63,17 @@ angular.module('app.loggedIn.patient.directives.list', [])
 				loadPage(1);
 			}
 			var sort = function(option){
+
 				scope.patient.search.Creation_date = option.by;
-				scope.patient.search.DOB = option.by;
+				scope.patient.load();
+				switch(option.by){
+					case 'Creation_date':
+						scope.patient.search.Creation_date = option.by;
+						break;
+					case 'DOB':
+						scope.patient.search.DOB = option.value;
+						break;
+				}//end switch
 				scope.patient.load();
 			}
 
@@ -77,6 +93,7 @@ angular.module('app.loggedIn.patient.directives.list', [])
 				loadPage: function(page){ loadPage(page); },
 				onSearch: function(option){ onSearch(option)},
 				sort: function(option){ sort(option) }
+				// sortDOB: function(option){ sortDOB(option) }
 			}
 
 			/* LOAD FIRST */

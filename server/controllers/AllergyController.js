@@ -92,7 +92,7 @@ module.exports = {
 		var IdAllergy = knex
 		.select('patient_id')
 		.from('cln_patient_allergies')
-		.where('allergy_id', '3');
+		.where('allergy_id', postData.allergy_id);
 
 		IdAllergy
 		.then(function(result){

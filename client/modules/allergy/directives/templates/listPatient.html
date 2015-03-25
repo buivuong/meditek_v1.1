@@ -1,4 +1,5 @@
 <div class="ui basic segment">
+	<div class="mini ui button" ng-click="patient.dialog.choosePatient()">Choose Patient</div>
 	<div class="ui inverted dimmer" ng-class="{active: patient.loading}" ng-if="patient.loading">
 		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
 	</div>
@@ -31,9 +32,6 @@
 					ng-show="patient.search.Creation_date === 'asc'">
 						<i class="sort content ascending icon"></i>
 					</a>
-				</th>
-				<th>
-					{{'SYS_HEADER_ACTION' | translate}}
 				</th>
 			</tr>
 		</thead>
@@ -76,8 +74,6 @@
   						<i class="search icon"></i>
 					</div>
 				</td>
-				<td>
-				</td>
 			</tr>
 			<tr ng-if="patient.error" class="negative">
 				<td colspan="8" class="center aligned">{{patient.error}}</td>
@@ -93,8 +89,6 @@
 				<td>{{row.DOB | date: 'DD/MM/YYYY'}}</td>
 				<td>{{row.Sex | empty}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
-				<td>
-				</td>
 			</tr>
 		</tbody>
 		<tfoot>

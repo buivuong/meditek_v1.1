@@ -209,14 +209,17 @@ angular.module('app.directives.common', [])
                     options.appendElement.append(modalElement);
                 }else{
                     body.append(modalElement);
-                    modalElement.modal({
-                        'closable': false,
-                        'selector': {
-                            close: '.closed'
-                        }
-                    });
 
-                    angular.element(modalElement[0]).modal('show');
+                    $timeout(function(){
+                        modalElement.modal({
+                            'closable': false,
+                            'selector': {
+                                close: '.closed'
+                            }
+                        });
+
+                        angular.element(modalElement[0]).modal('show');
+                    }, 200)
                 }
 
                 // We now have a modal object.
