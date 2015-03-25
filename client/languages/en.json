@@ -65,6 +65,12 @@
 	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",
 	"MDL_TIMETABLE_BTN_ADD_DAY": "Add Day",
 
+	"MDL_PROBLEM_FIELD_NAME": "Patient Name",
+	"MDL_PROBLEM_FIELD_FROM_DATE": "From Date",
+	"MDL_PROBLEM_FIELD_TO_DATE": "To Date",
+	"MDL_PROBLEM_FIELD_ICD10": "ICD10",
+	"MDL_PROBLEM_FIELD_ICPC": "ICPC",
+
 	"ERR_TIMETABLE_001": "Service is required",
 	"ERR_TIMETABLE_002": "Day Of Week is required",
 	"ERR_TIMETABLE_003": "From Time is required",
@@ -88,6 +94,16 @@
 	"ERR_TIMETABLE_018": "You do not have any location !!! Please add one",
 
 	"ERR_ALLERGY_001": "Allergy Name is required",
+
+	"ERR_PROBLEM_001": "Patient Name is selected",
+	"ERR_PROBLEM_002": "From Date is required",
+	"ERR_PROBLEM_003": "To Date is required",
+	"ERR_PROBLEM_004": "ICD10 Code is required",
+	"ERR_PROBLEM_005": "ICPC Code is required",
+	"ERR_PROBLEM_006": "From Date is not Date",
+	"ERR_PROBLEM_007": "To Date is not Date",
+	"ERR_PROBLEM_008": "From Date larger than To Date",
+	"ERR_PROBLEM_009": "To Date smaller than From Date",
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",

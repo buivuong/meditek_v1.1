@@ -19,7 +19,7 @@ angular.module('app.loggedIn.allergy.dialog.edit', [])
 		AllergyModel.byid({allergy_id: $scope.resolve.id})
 		.then(function(response){
 			$scope.allergy.form = angular.copy(response.data);
-		}, function(error){})
+		}, function(errors){})
 	}
 
 	$scope.allergy = {
