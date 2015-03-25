@@ -90,7 +90,6 @@ angular.module('app.loggedIn.allergy.directives.list', [])
 					}
 				}).then(function(modal){
 					modal.close.then(function(result){
-						console.log(result);
 						if(result){
 							AllergyModel.remove(result).then(function(deleted){
 								scope.allergy.load();

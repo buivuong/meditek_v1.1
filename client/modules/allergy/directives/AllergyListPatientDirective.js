@@ -23,6 +23,7 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 			var load = function(){
 				scope.patient.loading = true;
 				AllergyModel.idAllergy({allergy_id:$stateParams.allergyId}).then(function(response){
+					console.log(response);
 					scope.patient.loading = false;
 					scope.patient.error = '';
 					scope.patient.list = response.data;

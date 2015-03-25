@@ -66,7 +66,6 @@ module.exports = {
 
 	postByid: function(req, res){
 		var postData = req.body.data;
-
 		knex
 		.column('*')
 		.select()
@@ -87,18 +86,30 @@ module.exports = {
 
 	postIdAllergy: function(req, res){
 		var postData = req.body.data;
-		var varPatient_id = knex('cln_patient_allergies').where('allergy_id', postData.allergy_id);
-		knex
-		.select('*')
-		.from('cln_patients')
-		.whereIn('patient_id', varPatient_id)
-		.then(function(rows){
-			if(rows.length > 0)
-				res.json({data: rows[0]});
-			else{
-				commonFunction.commonFunction(error, 'ERR_SYS_006', res);
-				return;
+
+		//var arg = '1'
+		console.log('this is postData',postData);
+		var IdAllergy = knex
+		.select('patient_id')
+		.from('cln_patient_allergies')
+		.where('allergy_id', '3');
+
+		IdAllergy
+		.then(function(result){
+			if(!result || result.length===0){
+				res.json({data: [], count: 0});
 			}
+			knex
+			.select('*')
+			.from('cln_patients')
+			.whereIn('cln_patients.patient_id', IdAllergy)
+			.then(function(rows){
+				//arg = 2;
+				res.json({data: rows, count: rows.length})
+			})
+			.catch(function(error){
+				commonFunction.commonError(error, 'ERR_SYS_003', res);
+			})
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
