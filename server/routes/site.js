@@ -7,4 +7,5 @@ module.exports = function(app){
 	var module = config.defaultUrl+'site/';
 
 	app.post(module+'listByDept', commonFunction.ensureAuthorized, SiteController.postListByDept);
+	app.get(module+'listAll', commonFunction.ensureAuthorized, SiteController.getListAll);
 }

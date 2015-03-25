@@ -20,5 +20,18 @@ module.exports = {
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
-	}//end post List By Dept
+	},//end post List By Dept
+
+	getListAll: function(req, res){
+		knex
+		.column('*')
+		.select()
+		.from('redimedsites')
+		.then(function(rows){
+			res.json({data: rows});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	}
 }

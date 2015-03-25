@@ -9,5 +9,10 @@ angular.module('app.loggedIn.site.models', [])
 		return instanceApi.post({data: data});
 	}
 
+	mainModel.listAll = function(){
+		var instanceApi = mainApi.one('listAll');
+		return instanceApi.get();
+	}
+
 	return mainModel;
 })

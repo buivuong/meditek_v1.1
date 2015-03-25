@@ -1,0 +1,30 @@
+<div class="ui basic segment">
+	<div class="ui small form">
+		<div class="three fields">
+			<!-- DATEPICKER -->
+			<div class="field">
+				<label>{{'MDL_APPOINTMENT_LABEL_DATEPICKER' | translate}}</label>
+				<input ng-date-picker ng-model="appointment.search.datepicker">
+			</div>
+			<!-- END DATEPICKER -->
+			
+			<!-- REDIMEDSITE -->
+			<div class="field">
+				<label>{{'MDL_APPOINTMENT_LABEL_REDIMEDSITE' | translate}}</label>
+				<select ng-options="s.id as s.Site_name for s in site.list" ng-model="appointment.search.site_id">
+				</select>
+			</div>
+			<!-- END REDIMEDSITE -->
+
+			<!-- CLINICAL DEPT -->
+			<div class="field">
+				<label>{{'MDL_APPOINTMENT_LABEL_CLINICAL_DEPT' | translate}}</label>
+				<select ng-options="c.CLINICAL_DEPT_ID as c.CLINICAL_DEPT_NAME for c in clinicalDept.list" 
+					ng-model="appointment.search.clinical_dept_id">
+				</select>
+			</div>
+			<!-- END CLINICAL DEPT -->
+		</div>
+		<!-- END THREE FIELDS -->
+	</div>
+</div>

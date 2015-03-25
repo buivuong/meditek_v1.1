@@ -1,0 +1,1 @@
+angular.module('app.loggedIn.clinicalDept', ['app.loggedIn.clinicalDept.include'])

@@ -6,13 +6,12 @@ angular.module('app.loggedIn', [
     'app.loggedIn.doctor',
     'app.loggedIn.service',
     'app.loggedIn.appointment',
-    'app.loggedIn.allergie',
     'app.loggedIn.problem',
     'app.loggedIn.site',
     'app.loggedIn.allergy',
     'app.loggedIn.patient',
-    'app.loggedIn.medicine'
-
+    'app.loggedIn.medicine',
+    'app.loggedIn.clinicalDept'
 ])
 
 .config(function ($stateProvider) {

@@ -80,6 +80,10 @@
 	"MDL_PROBLEM_FIELD_ICD10": "ICD10",
 	"MDL_PROBLEM_FIELD_ICPC": "ICPC",
 
+	"MDL_APPOINTMENT_LABEL_DATEPICKER": "Datepicker",
+	"MDL_APPOINTMENT_LABEL_REDIMEDSITE": "Redimed Site",
+	"MDL_APPOINTMENT_LABEL_CLINICAL_DEPT": "Clinical Dept",
+
 	"ERR_TIMETABLE_001": "Service is required",
 	"ERR_TIMETABLE_002": "Day Of Week is required",
 	"ERR_TIMETABLE_003": "From Time is required",
@@ -104,7 +108,6 @@
 
 	"ERR_ALLERGY_001": "Allergy Name is required",
 
-<<<<<<< HEAD
 	"ERR_PROBLEM_001": "Patient Name is selected",
 	"ERR_PROBLEM_002": "From Date is required",
 	"ERR_PROBLEM_003": "To Date is required",
@@ -114,7 +117,7 @@
 	"ERR_PROBLEM_007": "To Date is not Date",
 	"ERR_PROBLEM_008": "From Date larger than To Date",
 	"ERR_PROBLEM_009": "To Date smaller than From Date",
-=======
+
 	"TBL_HEADER_PRICE_PERUNIT": "Price per unit",
 
 	"MDL_MEDICINE_FIELD_NAME": "Medicine name",
@@ -123,7 +126,6 @@
 	"ERR_MEDICINE_001" : "Medicine name is required",
 	"ERR_MEDICINE_002" : "Medicine price is required",
 	"ERR_MEDICINE_003" : "Medicine unit type is required",
->>>>>>> origin/master
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",

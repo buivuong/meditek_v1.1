@@ -39,9 +39,9 @@ require('./routes/appointment')(app);
 require('./routes/problem')(app);
 require('./routes/site')(app);
 require('./routes/allergy')(app);
-require('./routes/allergie')(app);
 require('./routes/medicine')(app);
 require('./routes/patient')(app);
+require('./routes/clinicalDept')(app);
 
 /* END ROUTES */
 
