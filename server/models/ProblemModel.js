@@ -3,28 +3,24 @@ var model = {
 	errors: {
 
 		create: {
-			
+
 			required: [
-
-				{field: 'Patient_id', code: 'ERR_PROBLEM_001'},
-				{field: 'From_date', code: 'ERR_PROBLEM_002'},
-				{field: 'To_date', code: 'ERR_PROBLEM_003'},
-				{field: 'ICD10_code', code: 'ERR_PROBLEM_004'},
-				{field: 'ICPC_code', code: 'ERR_PROBLEM_005'}
-
+				{field: 'From_date', code: 'ERR_PROBLEM_001'},
+				{field: 'To_date', code: 'ERR_PROBLEM_002'},
+				{field: 'ICD10_code', code: 'ERR_PROBLEM_003'},
+				{field: 'ICPC_code', code: 'ERR_PROBLEM_004'}
 			],
-			date: [
-				{field: 'From_date', code: 'ERR_PROBLEM_006'},
-				{field: 'To_date', code: 'ERR_PROBLEM_007'}
+			date:[
+				{field: 'From_date', code: 'ERR_PROBLEM_005'},
+				{field: 'To_date', code: 'ERR_PROBLEM_006'}
 			],
-			compareDate: [
-				{field: 'From_date', code: 'ERR_PROBLEM_008'},
-				{field: 'To_date', code: 'ERR_PROBLEM_009'}
-			]
+			compareDate:[
+				{field: 'From_date', code: 'ERR_PROBLEM_007'},
+				{field: 'To_date', code: 'ERR_PROBLEM_008'}
+			]	
+		}
 
-		}//end create
+	}
 
-	}//end errors
-
-};
+}
 module.exports = model;

@@ -1,5 +1,5 @@
-angular.module('app.loggedIn.problem.controllers.list', [])
+angular.module('app.loggeddIn.problem.list.controller', [])
 
 .controller('ProblemListController', function($scope, $state){
-	
+
 })

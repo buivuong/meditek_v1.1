@@ -2,42 +2,44 @@
 	<i class="close icon" ng-click="problem.close(null)"></i>
 	<div class="content">
 		<form class="ui small form">
+
 			<div class="three fields">
 				<div class="required field" id="Patient_id">
 					<label>{{'MDL_PROBLEM_FIELD_NAME' | translate}}</label>
-					<select>
-					</select>
+					<input type="text" ng-model="problem.form.Patient_id" />
+					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="Patient_id_label"></div>
 				</div>
 				<div class="required field" id="From_date">
-					<label>{{'MDL_PROBLEM_FIELD_FROM_DATE' | translate}}</label>
-					<input ng-model="problem.form.From_date" ng-date-picker>
+					<label>{{'MDL_PROBLEM_FROM_DATE' | translate}}</label>
+					<input type="text" ng-model="problem.form.From_date" ng-date-picker />
 					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="From_date_label"></div>
 				</div>
 				<div class="required field" id="To_date">
-					<label>{{'MDL_PROBLEM_FIELD_TO_DATE' | translate}}</label>
-					<input ng-model="problem.form.To_date" ng-date-picker>
+					<label>{{'MDL_PROBLEM_TO_DATE' | translate}}</label>
+					<input type="text" ng-model="problem.form.To_date" ng-date-picker />
 					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="To_date_label"></div>
 				</div>
 			</div>
-			<div class="three fields">
+			<div class="two fields">
 				<div class="required field" id="ICD10_code">
-					<label>{{'MDL_PROBLEM_FIELD_ICD10' | translate}}</label>
-					<input ng-model="problem.form.ICD10_code" />
-					<div class="ui tiny red poiting prompt label transition" style="display: none;" id="ICD10_code_label"></div>
+					<label>{{'MDL_PROBLEM_ICD10' | translate}}</label>
+					<input type="text" ng-model="problem.form.ICD10_code" />
+					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="ICD10_code_label"></div>
 				</div>
 				<div class="required field" id="ICPC_code">
-					<label>{{'MDL_PROBLEM_FIELD_ICPC' | translate}}</label>
-					<input ng-model="problem.form.ICPC_code" />
+					<label>{{'MDL_PROBLEM_ICPC' | translate}}</label>
+					<input type="text" ng-model="proble.form.ICPC_code" />
 					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="ICPC_code_label"></div>
 				</div>
 			</div>
-			<div class="field" id="Notes">
-				<label>Note</label>
-				<textarea ng-model="problem.form.Notes" rows="5"></textarea>
+			<div class="field">
+				<label>{{'MDL_PROBLEM_Note' | translate}}</label>
+				<textarea ng-model="problem.form.notes" rows="5"></textarea>
 			</div>
 			<div class="field">
-				<div class="ui mini default button" ng-click="problem.save(problem.form)">{{'FRM_BTN_SAVE' | translate}}</div>
+				<div class="ui small button" ng-click="problem.save(problem.form)">{{'SYS_BTN_SAVE' | translate}}</div>
 			</div>
+
 		</form>
 	</div>
 </div>

@@ -4,13 +4,11 @@ angular.module('app.loggedIn.problem.dialog.add', [])
 
 	var closeDialog = function(params){
 		close(params);
-
 	}
 
 	var save = function(form){
-
+		CommonModel.beforeSave($scope.problem.errors);
 		var postData = angular.copy(form);
-
 		postData.Created_by = postData.Last_updated_by = localStorageService.get('user').id;
 		postData.Creation_date = postData.Last_update_date = moment().format('YYYY-MM-DD hh:mm:ss');
 		postData.From_date = CommonModel.convertToDate(postData.From_date);
@@ -23,23 +21,21 @@ angular.module('app.loggedIn.problem.dialog.add', [])
 			$scope.problem.errors = angular.copy(error.data.errors);
 			CommonModel.beforeError($scope.problem.errors);
 		})
-
 	}
 
 	$scope.problem = {
-
-		close: function(params){ closeDialog(params); },
-		save: function(form){ save(form); },
+		save: function(params){ save(params); },
+		close: function(form){ closeDialog(form); },
 		form: {
-			Patient_id: '1',
+			Patient_id: 1,
 			From_date: '',
 			To_date: '',
-			Notes: '',
 			ICD10_code: '',
-			ICPC_code: ''
+			ICPC_code: '',
+			Notes: ''
 		},
 		errors: []
-	}
 
+	}
 
 })

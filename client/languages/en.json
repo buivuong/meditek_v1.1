@@ -71,14 +71,16 @@
 	"MDL_ALLERGY_FIELD_NAME": "Allergy Name",
 	"MDL_ALLERGY_FIELD_CREATION_DATE": "Creation Date",
 
+	"MDL_PROBLEM_FIELD_NAME": "Patient Name",
+	"MDL_PROBLEM_FROM_DATE": "From Date",
+	"MDL_PROBLEM_TO_DATE": "To Date",
+	"MDL_PROBLEM_ICD10": "ICD10",
+	"MDL_PROBLEM_ICPC": "ICPC",
+	"MDL_PROBLEM_Note": "Note",
+
+
 	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",
 	"MDL_TIMETABLE_BTN_ADD_DAY": "Add Day",
-
-	"MDL_PROBLEM_FIELD_NAME": "Patient Name",
-	"MDL_PROBLEM_FIELD_FROM_DATE": "From Date",
-	"MDL_PROBLEM_FIELD_TO_DATE": "To Date",
-	"MDL_PROBLEM_FIELD_ICD10": "ICD10",
-	"MDL_PROBLEM_FIELD_ICPC": "ICPC",
 
 	"MDL_APPOINTMENT_LABEL_DATEPICKER": "Datepicker",
 	"MDL_APPOINTMENT_LABEL_REDIMEDSITE": "Redimed Site",
@@ -108,16 +110,6 @@
 
 	"ERR_ALLERGY_001": "Allergy Name is required",
 
-	"ERR_PROBLEM_001": "Patient Name is selected",
-	"ERR_PROBLEM_002": "From Date is required",
-	"ERR_PROBLEM_003": "To Date is required",
-	"ERR_PROBLEM_004": "ICD10 Code is required",
-	"ERR_PROBLEM_005": "ICPC Code is required",
-	"ERR_PROBLEM_006": "From Date is not Date",
-	"ERR_PROBLEM_007": "To Date is not Date",
-	"ERR_PROBLEM_008": "From Date larger than To Date",
-	"ERR_PROBLEM_009": "To Date smaller than From Date",
-
 	"TBL_HEADER_PRICE_PERUNIT": "Price per unit",
 
 	"MDL_MEDICINE_FIELD_NAME": "Medicine name",
@@ -126,6 +118,16 @@
 	"ERR_MEDICINE_001" : "Medicine name is required",
 	"ERR_MEDICINE_002" : "Medicine price is required",
 	"ERR_MEDICINE_003" : "Medicine unit type is required",
+
+	"ERR_PROBLEM_001": "From Date is required",
+	"ERR_PROBLEM_002": "To Date is required",
+	"ERR_PROBLEM_003": "ICD10 is required",
+	"ERR_PROBLEM_004": "ICPC is required",
+	"ERR_PROBLEM_005": "From Date is not Date",
+	"ERR_PROBLEM_006": "To Date is not Date",
+	"ERR_PROBLEM_007": "From Date larger than To Date",
+	"ERR_PROBLEM_008": "To Date larger than From Date",
+	
 
 	"BRD_ALLERGIES" : "Allergies",
 	"FRM_LBL_ALLERGIE_DETAIL" : "Allergie detail",

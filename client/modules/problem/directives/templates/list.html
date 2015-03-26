@@ -1,3 +1,79 @@
-<div class="ui button" ng-click="goToAdd()">
-	{{'SYS_BTN_ADD' | translate}}
+<div class="ui basic segment">
+	<div class="mini ui button" ng-click="problem.dialog.add()">{{'SYS_BTN_ADD' | translate}}</div>
+	<div class="ui inverted dimmer" ng-class="{active: problem.loading}" ng-if="problem.loading">
+		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>{{'MDL_PROBLEM_FIELD_NAME' | translate}}</th>
+				<th>
+					{{'MDL_PROBLEM_FROM_DATE' | translate}}
+					<a ng-click="problem.sort({field: 'From_date', by: 'asc'})" ng-show="problem.search.From_date === 'desc'"><i class="sort content descending icon"></i></a>
+					<a ng-click="problem.sort({field: 'From_date', by: 'desc'})" ng-show="problem.search.To_date === 'asc'"><i class="sort content ascending icon"></i></a>
+				</th>
+				<th>
+					{{'MDL_PROBLEM_TO_DATE' | translate}}
+					<a ng-click="problem.sort({field: 'To_date', by: 'asc'})" ng-show="problem.search.To_date === 'desc'"><i class="sort content descending icon"></i></a>
+					<a ng-click="problem.sort({field: 'To_date', by: 'desc'})" ng-show="problem.search.To_date === 'asc'"><i class="sort content ascending icon"></i></a>
+				</th>
+				<th>{{'MDL_PROBLEM_ICD10' | translate}}</th>
+				<th>{{'MDL_PROBLEM_ICPC' | translate}}</th>
+				<th>
+					{{'MDL_PROBLEM_CREATE_DATE' | translate}}
+					<a ng-click="problem.sort({field: 'Create_date', by: 'asc'})" ng-show="problem.search.Create_date === 'desc'"><i class="sort content descending icon"></i></a>
+					<a ng-click="problem.sort({field: 'Create_date', by: 'desc'})" ng-show="problem.search.Create_date === 'asc'"><i class="sort content ascending icon"></i></a>
+				</th>
+				<th>{{'SYS_HEADER_ACTION' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<div class="ui transparent left icon fluid input">
+						<input placeholder="ICD10" type="text" ng-model="problem.search.ICD10_code" ng-enter="problem.onSearch({field: 'ICD10_code', value: problem.search.ICD10_code})" />
+						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon fluid input">
+						<input placeholder="ICPC" type="text" ng-model="problem.search.ICPC_code" ng-enter="problem.onSearch({field: 'ICPC_code', value: problem.search.ICPC_code})" />
+						<i class="search icon"></i>
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr ng-if="problem.error" class="negative">
+				<td colspan="7" class="center aligned">{{problem.error}}</td>
+			</tr>
+			<tr ng-if="problem.list.length==0 && !problem.error">
+				<td colspan="7" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+			</tr>
+			<tr ng-repeat="row in problem.list" style="cursor: pointer;">
+				<td>{{row.First_name}}&nbsp;{{row.Sur_name}}</td>
+				<td ng-class="{negative: !row.From_date}">{{row.From_date | date: 'DD/MM/YYYY'}}</td>
+				<td ng-class="{negative: !row.To_date}">{{row.To_date | date: 'DD/MM/YYYY'}}</td>
+				<td>{{row.ICD10_code}}</td>
+				<td>{{row.ICPC_code}}</td>
+				<td>{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+				<td>
+					<a><i class="edit icon"></i></a>
+					<a><i class="remove icon" ng-click="problem.dialog.removeProblem(row.Problem_id)"></i></a>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="7">
+				<i>{{problem.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
+				&nbsp;
+				<ng-pagination total="problem.count" row="problem.search.limit" ng-model="problem.search.page" on-change="problem.loadPage(data)"></ng-pagination>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
 </div>
