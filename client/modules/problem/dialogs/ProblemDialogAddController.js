@@ -1,6 +1,6 @@
 angular.module('app.loggedIn.problem.dialog.add', [])
 
-.controller('ProblemDialogAddController', function($scope, ProblemModel, CommonModel, close, localStorageService){
+.controller('ProblemDialogAddController', function($scope, ProblemModel, ModalService, CommonModel, close, localStorageService){
 
 	var closeDialog = function(params){
 		close(params);
@@ -23,19 +23,55 @@ angular.module('app.loggedIn.problem.dialog.add', [])
 		})
 	}
 
+	var patientClick = function(){
+		ModalService.showModal({
+			templateUrl: 'patientModal',
+			controller: function($scope, close){
+				angular.element('#problemModal').removeClass('active');
+				angular.element('#problemModal').removeClass('visible');
+
+				$scope.clickRow = function(row){
+					close(row);
+					angular.element('#problemModal').addClass('active');
+					angular.element('#problemModal').addClass('visible');
+				}
+
+				$scope.close = function(params){
+					close(params);
+					angular.element('#problemModal').addClass('active');
+					angular.element('#problemModal').addClass('visible');
+				}
+
+			}
+		})
+		.then(function(modal){
+			modal.close.then(function(result){
+				if(result) {
+					$scope.problem.form.Patient_id = result.Patient_id;
+					$scope.problem.Patient_name = result.First_name+result.Sur_name;
+				}
+			});
+		})
+	}
+
 	$scope.problem = {
 		save: function(params){ save(params); },
 		close: function(form){ closeDialog(form); },
 		form: {
-			Patient_id: 1,
+			Patient_id: null,
 			From_date: '',
 			To_date: '',
 			ICD10_code: '',
 			ICPC_code: '',
 			Notes: ''
 		},
+		Patient_name: '',
 		errors: []
 
+	}
+
+	$scope.patient = {
+		click: function(){ patientClick(); }
 	}
 
 })

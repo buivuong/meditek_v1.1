@@ -77,6 +77,8 @@
 	"MDL_PROBLEM_ICD10": "ICD10",
 	"MDL_PROBLEM_ICPC": "ICPC",
 	"MDL_PROBLEM_Note": "Note",
+	"MDL_PROBLEM_CREATE_DATE": "Creation Date",
+	"MDL_PROBLEM_LABEL_NAME" : "Patient Name",
 
 
 	"MDL_TIMETABLE_BTN_ADD_SITE": "Add Site",

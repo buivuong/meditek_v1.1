@@ -215,11 +215,12 @@ angular.module('app.directives.common', [])
                             'closable': false,
                             'selector': {
                                 close: '.closed'
-                            }
+                            },
+                            'allowMultiple': true
                         });
 
                         angular.element(modalElement[0]).modal('show');
-                    }, 200)
+                    }, 400)
                 }
 
                 // We now have a modal object.
