@@ -1,0 +1,94 @@
+<button ng-click="addClick()">Add</button>
+<div class="ui basic segment">
+	<div class="ui inverted dimmer" ng-class="{active: measurement.loading}" ng-if="measurement.loading">
+		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
+	</div>
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th>{{'MDL_MEASUREMENT_MEASURE_ID' | translate}}</th>
+				<th>{{'MDL_MEASUREMENT_PATIENT_ID' | translate}}</th>
+				<th>{{'MDL_MEASUREMENT_PATIENT_FIRST_NAME' | translate}}</th>
+				<th>{{'MDL_MEASUREMENT_PATIENT_SUR_NAME' | translate}}</th>
+				<th>{{'MDL_MEASUREMENT_MEASUREMENT_DATE' | translate}}</th>
+				<th>
+					{{'MDL_MEASUREMENT_CREATION_DATE' | translate}}
+					<a ng-click="measurement.sort({field: 'creation_date', by: 'asc'})"
+						ng-show="measurement.search.Creation_date === 'desc'">
+						<i class="sort content descending icon"></i>
+					</a>
+					<a ng-click="measurement.sort({field: 'creation_date', by: 'desc'})"
+					ng-show="measurement.search.Creation_date === 'asc'">
+						<i class="sort content ascending icon"></i>
+					</a>
+				</th>
+				<th>{{'SYS_HEADER_ACTION' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="measurement.search.measure_id" 
+  							ng-enter="measurement.onSearch({field: 'measure_id', value: measurement.search.measure_id})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="measurement.search.patient_id" 
+  							ng-enter="measurement.onSearch({field: 'patient_id', value: measurement.search.patient_id})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="measurement.search.measurement_date" 
+  							ng-enter="measurement.onSearch({field: 'measurement_date', value: measurement.search.measurement_date})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="measurement.search.First_name" 
+  							ng-enter="measurement.onSearch({field: 'First_name', value: measurement.search.First_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+				<td>
+					<div class="ui transparent left icon small fluid input">
+  						<input placeholder="Name" type="text" ng-model="measurement.search.Sur_name" 
+  							ng-enter="measurement.onSearch({field: 'Sur_name', value: measurement.search.Sur_name})">
+  						<i class="search icon"></i>
+					</div>
+				</td>
+			</tr>
+			<tr ng-if="measurement.error" class="negative">
+				<td colspan="8" class="center aligned">{{measurement.error}}</td>
+			</tr>
+			<tr ng-if="measurement.list.length == 0 && !measurement.error">
+				<td colspan="8" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
+			</tr>
+			<tr ng-repeat="row in measurement.list" style="cursor: pointer;" ng-click="onRowClick({row: row})">
+				<td>{{row.measure_id |empty }}</td>
+				<td>{{row.patient_id |empty }}</td>
+				<td>{{row.First_name | empty}}</td>
+				<td>{{row.Sur_name | empty}}</td>
+				<td>{{row.measurement_date | empty}}</td>
+				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+				<td><a><i class="remove icon"></i></a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="8">
+					<i>{{measurement.count}} {{'SYS_LABEL_ITEMS' | translate}}</i>
+					&nbsp
+					<ng-pagination total="measurement.count" row="measurement.search.limit" ng-model="measurement.search.page"
+						on-change="measurement.loadPage(data)">
+					</ng-pagination>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>

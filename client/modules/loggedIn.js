@@ -11,7 +11,8 @@ angular.module('app.loggedIn', [
     'app.loggedIn.allergy',
     'app.loggedIn.patient',
     'app.loggedIn.medicine',
-    'app.loggedIn.clinicalDept'
+    'app.loggedIn.clinicalDept',
+    'app.loggedIn.measurement'
 ])
 
 .config(function ($stateProvider) {

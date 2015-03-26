@@ -1,0 +1,245 @@
+<div class="ui basic segment">
+	<form class="ui small form">
+
+		<div class="four fields">
+			<!--patient_id -->
+			<div class="required field">
+				<label>Select a Patient</label>
+				<div class ="ui small fluid button" ng-model="measurement.form.patient_id" ng-click="patient.click()">
+				<span  ng-if="measurement.Patient_name">{{measurement.Patient_name}}</span>
+				<span  ng-if="!measurement.Patient_name">Select a Patient</span>
+				</div>
+			</div>
+			<!--END patient_id-->
+			<!--measurement_date -->
+			<div class="required field">
+				<label>Measurement Date</label>
+				<input type="text" ng-date-picker ng-model="measurement.form.measurement_date">
+			</div>
+			<!--measurement_date-->
+			<!--BP1 -->
+			<div class="required field">
+				<label>Cal id</label>
+				<input type="text" placeholder="cal_id" ng-model="measurement.form.cal_id">
+			</div>
+			<!--BP1-->
+
+			<!-- -->
+			<div class="field">
+				<label>ACR</label>
+				<input type="text" placeholder="ACR" ng-model="measurement.form.ACR">
+			</div>
+			<!---->
+		</div>
+		<div class="four fields">
+			<!--RATE -->
+			<div class="field">
+				<label>Rate</label>
+				<input type="text"  placeholder="RATE" ng-model="measurement.form.RATE">
+			</div>
+			<!--END RATE-->
+			<!-- Height-->
+			<div class="field">
+				<label>Height</label>
+				<input type="text"  placeholder="Height" ng-model="measurement.form.Height">
+			</div>
+			<!--END HEIGHT-->
+			<!--WEIGHT -->
+			<div class="field">
+				<label>Weight</label>
+				<input type="text" placeholder="Weight" ng-model="measurement.form.Weight">
+			</div>
+			<!--WEIGHT-->
+
+			<!--WAIST -->
+			<div class="field">
+				<label>Waist</label>
+				<input type="text" placeholder="Waist" ng-model="measurement.form.Waist">
+			</div>
+			<!--END WAIST-->
+		</div>
+		<div class="four fields">
+			<!--HIPS -->
+			<div class="field">
+				<label>Hips</label>
+				<input type="text"  placeholder="Hips" ng-model="measurement.form.Hips">
+			</div>
+			<!--END HIPS-->
+			<!--NECK -->
+			<div class="field">
+				<label>Neck</label>
+				<input type="text"  placeholder="Neck" ng-model="measurement.form.Neck">
+			</div>
+			<!--END NECK-->
+			<!--Head Circ-->
+			<div class="field">
+				<label>Head Circ</label>
+				<input type="text" placeholder="Head Circ" ng-model="measurement.form.head_circ">
+			</div>
+			<!--End Head Circ-->
+			<!--FEV1 -->
+			<div class="field">
+				<label>FEV1</label>
+				<input type="text" placeholder="FEV1" ng-model="measurement.form.FEV1">
+			</div>
+			<!--END FEV1-->
+		</div>
+		<div class="four fields">
+			<!-- FVC-->
+			<div class="field">
+				<label>FVC</label>
+				<input type="text"  placeholder="FVC" ng-model="measurement.form.FVC">
+			</div>
+			<!--END FVC-->
+			<!-- -->
+			<div class="field">
+				<label>Gas Transfer</label>
+				<input type="text"  placeholder="Gas Transfer" ng-model="measurement.form.Gas_transfer">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Cholesterol</label>
+				<input type="text" placeholder="Cholesterol" ng-model="measurement.form.Cholesterol">
+			</div>
+			<!---->
+
+			<!-- -->
+			<div class="field">
+				<label>HDL</label>
+				<input type="text" placeholder="HDL" ng-model="measurement.form.HDL">
+			</div>
+			<!---->
+		</div>
+			<div class="four fields">
+			<!-- -->
+			<div class="field">
+				<label>BSL</label>
+				<input type="text"  placeholder="BSL" ng-model="measurement.form.BSL">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>HbA1c</label>
+				<input type="text"  placeholder="HbA1c" ng-model="measurement.form.HbA1c">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Microalbuminuria</label>
+				<input type="text" placeholder="Microalbuminuria" ng-model="measurement.form.Microalbuminuria">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Potassium</label>
+				<input type="text" placeholder="Potassium" ng-model="measurement.form.Potassium">
+			</div>
+			<!---->
+		</div>
+
+		<div class="four fields">
+			<!-- -->
+			<div class="field">
+				<label>PSA</label>
+				<input type="text"  placeholder="PSA" ng-model="measurement.form.PSA">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Creatitine</label>
+				<input type="text"  placeholder="Creatitine" ng-model="measurement.form.Creatitine">
+			</div>
+			<!---->
+			<div class="field">
+				<label>BP1</label>
+				<input type="text" placeholder="BP1" ng-model="measurement.form.BP1">
+			</div>
+			<!--BP1-->
+
+			<!--BP2 -->
+			<div class="field">
+				<label>BP2 </label>
+				<input type="text" placeholder="BP2" ng-model="measurement.form.BP2">
+			</div>
+		</div>
+			<div class="four fields">
+			<div class="field">
+				<label>GFR</label>
+				<input type="text" placeholder="GFR" ng-model="measurement.form.GFR">
+			</div>
+			<!---->
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Right Pressure</label>
+				<input type="text" placeholder="right pressure" ng-model="measurement.form.right_pressure">
+			</div>
+			<!---->
+
+			<!-- -->
+			<div class="field">
+				<label>Left Pressure</label>
+				<input type="text" placeholder="left pressure" ng-model="measurement.form.left_pressure">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>Right Uncorrected</label>
+				<input type="text"  placeholder="right_uncorrected" ng-model="measurement.form.right_uncorrected">
+			</div>
+			<!---->
+		</div>
+			<div class="four fields">
+			<!-- -->
+			<div class="field">
+				<label>Left Uncorrected</label>
+				<input type="text"  placeholder="Left Uncorrected" ng-model="measurement.form.left_uncorrected">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>right_corrected</label>
+				<input type="text" placeholder="right_corrected" ng-model="measurement.form.right_corrected">
+			</div>
+			<!---->
+			<!-- -->
+			<div class="field">
+				<label>left_corrected</label>
+				<input type="text" placeholder="left_corrected" ng-model="measurement.form.left_corrected">
+			</div>
+			<!---->
+
+			<!-- -->
+			<div class="field">
+				<div class="two fields">
+					<div class="field">
+						<label>Is MDRD</label>
+						<input type="text"  placeholder="isMDRD" ng-model="measurement.form.isMDRD">
+					</div>
+					<!-- -->
+					<div class="field">
+						<label>IsCockcroft Fault</label>
+						<input type="text"  placeholder="isCockcroft_fault" ng-model="measurement.form.isCockcroft_fault">
+					</div>
+				</div>
+			</div>
+			<!---->
+		</div>
+		<div class="field">
+			<div class ="ui small fluid button" ng-click="measurement.save()">
+					Save
+			</div>
+		</div>
+		
+	</form>
+</div>
+
+<script type="text/ng-template" id="patientModal">
+	<div class="ui large modal" style="z-index: 1004">
+	    <i class="close icon" ng-click="close(null)"></i>
+	    <div class="content">
+	        <patient-list limit="10" on-row-click="clickRow(row)"></patient-list>
+	    </div>
+	</div>
+ </script>

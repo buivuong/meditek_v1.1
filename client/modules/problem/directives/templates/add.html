@@ -49,3 +49,12 @@
 	</div>
 </form>
 </div>
+
+<script type="text/ng-template" id="patientModal">
+	<div class="ui large modal" style="z-index: 1004">
+	    <i class="close icon" ng-click="close(null)"></i>
+	    <div class="content">
+	        <patient-list limit="10" on-row-click="clickRow(row)"></patient-list>
+	    </div>
+	</div>
+ </script>
