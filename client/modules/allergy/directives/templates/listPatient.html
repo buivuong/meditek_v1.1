@@ -33,6 +33,9 @@
 						<i class="sort content ascending icon"></i>
 					</a>
 				</th>
+				<th>
+					{{'SYS_HEADER_ACTION' | translate}}
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -89,7 +92,9 @@
 				<td>{{row.DOB | date: 'DD/MM/YYYY'}}</td>
 				<td>{{row.Sex | empty}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
+				<td><a><i class="remove icon" ng-click="patient.removePatient(row)"></i></a></td>
 			</tr>
+
 		</tbody>
 		<tfoot>
 			<tr>

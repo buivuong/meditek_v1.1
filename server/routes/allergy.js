@@ -12,4 +12,6 @@ module.exports = function(app){
 	app.post(module +'edit',commonFunction.ensureAuthorized,AllergyController.postEdit);
 	app.post(module +'remove',commonFunction.ensureAuthorized,AllergyController.postRemove);
 	app.post(module+'idAllergy', commonFunction.ensureAuthorized, AllergyController.postIdAllergy);
+	app.post(module+'allergyPatient', commonFunction.ensureAuthorized, AllergyController.postAllergyPatient);
+	app.post(module+'removeAllergyPatient', commonFunction.ensureAuthorized, AllergyController.postRemoveAllergyPatient);
 }

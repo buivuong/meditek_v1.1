@@ -1,7 +1,6 @@
 <div class="ui fullscreen modal" id="listPatient">
 	<i class="close icon" ng-click="allergy.close(null)"></i>
 	 <div class="content">
-		 <patient-list limit="10"></patient-list>
-	</div>
-    
+		 <patient-list limit="10" on-row-click="clickRow(row)"></patient-list>
+	</div>   
 </div>

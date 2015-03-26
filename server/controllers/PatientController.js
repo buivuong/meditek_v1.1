@@ -48,7 +48,27 @@ module.exports = {
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
-	}//end postAdd
+	},//end postAdd 
+
+	postByid: function(req, res){
+		var postData = req.body.data;
+		knex
+		.column('*')
+		.select()
+		.from('cln_patients')
+		.where('Patient_id', postData.Patient_id)
+		.then(function(rows){
+			if(rows.length > 0)
+				res.json({data: rows[0]});
+			else{
+				commonFunction.commonFunction(error, 'ERR_SYS_006', res);
+				return;
+			}
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	}//end byId
 
 
 

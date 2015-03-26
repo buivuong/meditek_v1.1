@@ -86,9 +86,6 @@ module.exports = {
 
 	postIdAllergy: function(req, res){
 		var postData = req.body.data;
-
-		//var arg = '1'
-		console.log('this is postData',postData);
 		var IdAllergy = knex
 		.select('patient_id')
 		.from('cln_patient_allergies')
@@ -154,6 +151,48 @@ module.exports = {
 		knex('cln_allergies')
 		.where({
 			allergy_id: postData})
+		.del()
+		.then(function(deleted){
+			res.json({data: postData.id});
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	},
+
+	postAllergyPatient : function(req, res){
+		var postData = req.body.data;
+		knex
+		.select('*')
+		.from('cln_patient_allergies')
+		.where({allergy_id: postData.allergy_id,patient_id: postData.patient_id})
+		.then(function(response){
+			if(response.length > 0){
+				commonFunction.commonError(null, 'ERR_ALLERGY_002', res);
+				return;
+			}else{
+				knex('cln_patient_allergies')
+				.insert(postData)
+				.then(function(created){
+					res.json({data: created[0]});
+				})
+				.catch(function(error){
+					commonFunction.commonError(error, 'ERR_SYS_003', res);
+				})
+			}
+		})
+		.catch(function(error){
+			commonFunction.commonError(error, 'ERR_SYS_003', res);
+		})
+	},
+
+	postRemoveAllergyPatient : function (req,res){
+		var postData = req.body.data;
+		knex('cln_patient_allergies')
+		.where({
+			allergy_id: postData.allergy_id,
+			patient_id: postData.patient_id
+		})
 		.del()
 		.then(function(deleted){
 			res.json({data: postData.id});

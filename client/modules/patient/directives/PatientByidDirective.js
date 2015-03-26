@@ -1,13 +1,12 @@
-angular.module('app.loggedIn.patient.directives.list', [])
+angular.module('app.loggedIn.patient.directives.byid', [])
 
-.directive('patientList', function(PatientModel, ModalService, $filter,$state){
+.directive('patientByid', function(PatientModel, ModalService, $filter,$state,$stateParams){
 	return {
 		restrict: 'EA',
-		templateUrl: 'modules/patient/directives/templates/list.html',
+		templateUrl: 'modules/patient/directives/templates/patientbyid.html',
 		scope: {
 			options: '=',
-			limit: '@',
-			onRowClick: '&'
+			limit: '@'
 		},
 		link: function(scope, elem, attrs){
 			if(S(scope.limit).isEmpty())
@@ -30,8 +29,7 @@ angular.module('app.loggedIn.patient.directives.list', [])
 
 			var load = function(){
 				scope.patient.loading = true;
-
-				PatientModel.list(search).then(function(response){
+				PatientModel.byid({Patient_id: $stateParams.Patient_id}).then(function(response){
 					scope.patient.loading = false;
 					scope.patient.error = '';
 					scope.patient.list = response.data;

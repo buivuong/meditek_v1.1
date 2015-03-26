@@ -23,7 +23,6 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 			var load = function(){
 				scope.patient.loading = true;
 				AllergyModel.idAllergy({allergy_id:$stateParams.allergyId}).then(function(response){
-					console.log(response);
 					scope.patient.loading = false;
 					scope.patient.error = '';
 					scope.patient.list = response.data;
@@ -69,6 +68,7 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 
 			var choosePatient = function(){
 				ModalService.showModal({
+					resolve: {id: $stateParams.allergyId},
      				templateUrl: 'modules/allergy/dialogs/templates/listPatient.html',
 					controller: 'AllergyDialogListPatientController'
     			})
@@ -80,7 +80,31 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
     				});
     			})
 			}
-			
+			var removePatient = function(row){
+				ModalService.showModal({
+					resolve: {id: row.Patient_id},
+					templateUrl: 'common/views/remove.html',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						var postData = {
+							allergy_id:'',
+							patient_id:''
+						}
+						postData.allergy_id = $stateParams.allergyId;
+						postData.patient_id =  result;
+						if(result){
+							AllergyModel.removeAllergyPatient(postData).then(function(deleted){
+								scope.patient.load();
+							}, function(error){});
+						}
+					})
+				})
+			}
 			scope.patient = {
 				dialog: {
 					choosePatient: function(){ choosePatient(); }
@@ -94,7 +118,8 @@ angular.module('app.loggedIn.allergy.directives.listPatient', [])
 				loadPage: function(page){ loadPage(page); },
 				onSearch: function(option){ onSearch(option)},
 				sort: function(option){ sort(option) },
-				choosePatient :function(){choosePatient()}
+				choosePatient :function(){choosePatient()},
+				removePatient : function(row){removePatient(row);}
 			}
 
 			/* LOAD FIRST */

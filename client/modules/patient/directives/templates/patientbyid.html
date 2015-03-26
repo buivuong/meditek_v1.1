@@ -80,7 +80,7 @@
 			<tr ng-if="patient.list.length == 0 && !patient.error">
 				<td colspan="8" class="center aligned">{{'MESS_SYS_002' | translate}}</td>
 			</tr>
-			<tr ng-repeat="row in patient.list" style="cursor: pointer;" ng-click="onRowClick({row: row})">
+			<tr ng-repeat="row in patient.list" style="cursor: pointer;" ng-click="rowClick(row.Patient_id)">
 				<td>{{row.First_name |empty }}</td>
 				<td>{{row.Sur_name |empty }}</td>
 				<td>{{row.Title | empty}}</td>

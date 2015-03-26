@@ -12,4 +12,14 @@ angular.module("app.loggedIn.patient", ['app.loggedIn.patient.include'])
 				}
 			}//end views
 		})
+
+		.state('loggedIn.patientByid', {
+			url: '/patient/:Patient_id',
+			views: {
+				'main-content': {
+					templateUrl: 'modules/patient/views/patientbyid.html',
+					controller: 'PatientByidController'
+				}
+			}//end views
+		})
 })
