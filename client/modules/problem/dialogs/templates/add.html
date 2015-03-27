@@ -31,7 +31,7 @@
 				</div>
 				<div class="required field" id="ICPC_code">
 					<label>{{'MDL_PROBLEM_ICPC' | translate}}</label>
-					<input type="text" ng-model="proble.form.ICPC_code" />
+					<input type="text" ng-model="problem.form.ICPC_code" />
 					<div class="ui tiny red pointing prompt label transition" style="display: none;" id="ICPC_code_label"></div>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 				<textarea ng-model="problem.form.notes" rows="5"></textarea>
 			</div>
 			<div class="field">
-				<div class="ui small button" ng-click="problem.save(problem.form)">{{'SYS_BTN_SAVE' | translate}}</div>
+				<div class="ui small button" ng-click="problem.save()">{{'SYS_BTN_SAVE' | translate}}</div>
 			</div>
 
 		</form>
@@ -48,7 +48,7 @@
 </div>
 
 <script type="text/ng-template" id="patientModal">
-	<div class="ui large modal" style="z-index: 1004">
+	<div class="ui large modal">
 	    <i class="close icon" ng-click="close(null)"></i>
 	    <div class="content">
 	        <patient-list limit="10" on-row-click="clickRow(row)"></patient-list>

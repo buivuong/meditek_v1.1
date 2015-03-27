@@ -6,9 +6,12 @@ angular.module('app.loggedIn.problem.dialog.add', [])
 		close(params);
 	}
 
-	var save = function(form){
+	var save = function(){
 		CommonModel.beforeSave($scope.problem.errors);
-		var postData = angular.copy(form);
+		var postData = angular.copy($scope.problem.form);
+
+		console.log(postData);
+
 		postData.Created_by = postData.Last_updated_by = localStorageService.get('user').id;
 		postData.Creation_date = postData.Last_update_date = moment().format('YYYY-MM-DD hh:mm:ss');
 		postData.From_date = CommonModel.convertToDate(postData.From_date);

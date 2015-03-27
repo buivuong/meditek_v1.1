@@ -7,6 +7,11 @@ angular.module('app.loggedIn.appointment.models', [])
 	mainModel.byDoctor = function(data){
 		var instanceApi = mainApi.all('byDoctor');
 		return instanceApi.post({data: data});
+	},
+
+	mainModel.load = function(data){
+		var instanceApi = mainApi.all('load');
+		return instanceApi.post({data: data});
 	}
 
 	return mainModel;

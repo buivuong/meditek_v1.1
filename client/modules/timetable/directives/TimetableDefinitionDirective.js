@@ -166,9 +166,35 @@ angular.module('app.loggedIn.timetable.directives.definition', [])
 			}
 
 			var createTimetable = function(row){
-				row.clinical_dept_id = scope.doctor.item.CLINICAL_DEPT_ID;
-				row.Appt_interval = scope.doctor.item.Appt_interval;
-				TimetableModel.createTimetable(row)
+				var postData = angular.copy(row);
+
+				postData.day_of_Week_code = null;
+
+				switch(postData.day_of_Week){
+					case 'Monday':
+						postData.day_of_Week_code = 1;
+						break;
+					case 'Tuesday':
+						postData.day_of_Week_code = 2;
+						break;
+					case 'Wednesday':
+						postData.day_of_Week_code = 3;
+						break;
+					case 'Thursday':
+						postData.day_of_Week_code = 4;
+						break;
+					case 'Friday':
+						postData.day_of_Week_code = 5;
+						break;
+					case 'Saturday':
+						postData.day_of_Week_code = 6;
+						break;
+				}
+
+				postData.clinical_dept_id = scope.doctor.item.CLINICAL_DEPT_ID;
+				postData.Appt_interval = scope.doctor.item.Appt_interval;
+
+				TimetableModel.createTimetable(postData)
 				.then(function(response){
 					scope.timetable.notify.save = response.data;
 				}, function(error){

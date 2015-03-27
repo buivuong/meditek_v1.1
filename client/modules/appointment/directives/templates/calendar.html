@@ -4,14 +4,15 @@
 			<!-- DATEPICKER -->
 			<div class="field">
 				<label>{{'MDL_APPOINTMENT_LABEL_DATEPICKER' | translate}}</label>
-				<input ng-date-picker ng-model="appointment.search.datepicker">
+				<input ng-date-picker ng-model="appointment.search.datepicker" ng-change="appointment.load()">
 			</div>
 			<!-- END DATEPICKER -->
 			
 			<!-- REDIMEDSITE -->
 			<div class="field">
 				<label>{{'MDL_APPOINTMENT_LABEL_REDIMEDSITE' | translate}}</label>
-				<select ng-options="s.id as s.Site_name for s in site.list" ng-model="appointment.search.site_id">
+				<select ng-options="s.id as s.Site_name for s in site.list" ng-model="appointment.search.site_id"
+					ng-change="appointment.load()">
 				</select>
 			</div>
 			<!-- END REDIMEDSITE -->
@@ -20,11 +21,41 @@
 			<div class="field">
 				<label>{{'MDL_APPOINTMENT_LABEL_CLINICAL_DEPT' | translate}}</label>
 				<select ng-options="c.CLINICAL_DEPT_ID as c.CLINICAL_DEPT_NAME for c in clinicalDept.list" 
-					ng-model="appointment.search.clinical_dept_id">
+					ng-model="appointment.search.clinical_dept_id"
+					ng-change="appointment.load()">
+					<option value="">{{'MESS_SYS_009' | translate}}</option>
 				</select>
 			</div>
 			<!-- END CLINICAL DEPT -->
 		</div>
 		<!-- END THREE FIELDS -->
 	</div>
+	<div class="appointment">
+		<div class="appointment-row" style="margin-bottom: 10px;">
+			<div class="appointment-block-time"></div>
+			<div class="appointment-block-header" ng-repeat="doctor in doctor.headers">
+				{{doctor.NAME}}
+			</div>
+		</div>
+		<div class="appointment-row" ng-repeat="app in appointment.list">
+			<div class="appointment-block-time">{{app.FROM_TIME}}</div>
+			<div class="appointment-block" ng-repeat="col in app.doctors" ng-class="{'block-active': col.PATIENTS !== '###'}">
+				<span ng-if="col.PATIENTS === 'MESS_SYS_010'">
+					<a ng-click="appointment.dialog.add(app, col)">{{'MESS_SYS_010' | translate}}</a>
+				</span>
+				<span ng-if="col.PATIENTS === '###'">
+					{{col.PATIENTS}}
+				</span>
+			</div>
+		</div>
+	</div> <!-- END APPOINTMENT -->
 </div>
+
+<script type="text/ng-template" id="appointmentAdd">
+	<div class="ui large modal">
+	    <i class="close icon" ng-click="close(null)"></i>
+	    <div class="content">
+	        <appointment-add></appointment-add>
+	    </div>
+	</div>
+ </script>

@@ -30,3 +30,48 @@ a{
 .table-div .active{
 	background-color: #2BEABB;
 }
+
+.appointment{
+
+}
+
+.appointment .appointment-row{
+
+}
+
+.appointment .appointment-block-time,
+.appointment .appointment-block,
+.appointment .appointment-block-header
+{
+	display: inline-block;
+}
+
+.appointment .appointment-block-time{
+	width: 100px;
+}
+
+.appointment .appointment-block{
+	width: 150px;
+	font-size: 11px;
+	height: 70px;
+	margin: 0 3px 3px 0;
+	padding: 5px 0px 0px 5px;
+	color: white;
+}
+
+.appointment .appointment-block-header{
+	width: 150px;
+	font-weight: bold;
+}
+
+.appointment .appointment-block a{
+	color: white;
+}
+
+.block-transparent{
+	background-color: #F9F9F9;
+}
+
+.block-active{
+	background-color: #7FBFF3;
+}

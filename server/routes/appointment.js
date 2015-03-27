@@ -7,4 +7,5 @@ module.exports = function(app){
 	var module = config.defaultUrl+'appointment/';
 
 	app.post(module+'byDoctor', commonFunction.ensureAuthorized, AppointmentController.postByDoctor);
+	app.post(module+'load', commonFunction.ensureAuthorized, AppointmentController.postLoad);
 }

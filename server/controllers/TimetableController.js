@@ -236,21 +236,23 @@ module.exports = {
 						site_id = site.site_id;
 				})
 
-				var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
-				var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
+				if(moment(current_date).days() === postData.day_of_Week_code){
+					var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
+					var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
 
-				while(from_time_seconds < to_time_seconds){
-					var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
-					var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
-					var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
+					while(from_time_seconds < to_time_seconds){
+						var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
+						var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
+						var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
 
-					var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
-								FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
-								CLINICAL_DEPT_ID: postData.clinical_dept_id};
-					dateArrayFromDayToDate.push(object);
+						var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
+									FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
+									CLINICAL_DEPT_ID: postData.clinical_dept_id};
+						dateArrayFromDayToDate.push(object);
 
-					from_time_seconds = from_time_seconds + postData.Appt_interval*60;
-				}
+						from_time_seconds = from_time_seconds + postData.Appt_interval*60;
+					}
+				}//end if
 			}
 
 			var current_site = 2;
@@ -277,21 +279,23 @@ module.exports = {
 					}
 				}
 
-				var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
-				var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
+				if(moment(current_date).days() === postData.day_of_Week_code){
+					var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
+					var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
 
-				while(from_time_seconds < to_time_seconds){
-					var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
-					var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
-					var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
+					while(from_time_seconds < to_time_seconds){
+						var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
+						var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
+						var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
 
-					var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
-								FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
-								CLINICAL_DEPT_ID: postData.clinical_dept_id};
-					dateArrayFromDayToDate.push(object);
+						var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
+									FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
+									CLINICAL_DEPT_ID: postData.clinical_dept_id};
+						dateArrayFromDayToDate.push(object);
 
-					from_time_seconds = from_time_seconds + postData.Appt_interval*60;
-				}
+						from_time_seconds = from_time_seconds + postData.Appt_interval*60;
+					}
+				}//end if
 
 				if(diff_day === 6){
 					diff_day = -1;
@@ -313,33 +317,39 @@ module.exports = {
 						site_id = site.site_id;
 				})
 
-				var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
-				var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
+				if(moment(current_date).days() === postData.day_of_Week_code){
+					var from_time_seconds = commonFunction.addInterval(postData.from_time, 0);
+					var to_time_seconds = commonFunction.addInterval(postData.to_time, 0);
 
-				while(from_time_seconds < to_time_seconds){
-					var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
-					var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
-					var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
+					while(from_time_seconds < to_time_seconds){
+						var from_time_hhmm = commonFunction.toHHMM(from_time_seconds);
+						var from_add_time_seconds = commonFunction.addInterval(from_time_hhmm, postData.Appt_interval);
+						var to_time_hhmm = commonFunction.toHHMM(from_add_time_seconds);					
 
-					var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
-								FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
-								CLINICAL_DEPT_ID: postData.clinical_dept_id};
-					dateArrayFromDayToDate.push(object);
+						var object = {CURRENT_DATE: current_date, DOCTOR_ID: postData.doctor_id, SITE_ID: site_id, 
+									FROM_TIME: from_time_hhmm, TO_TIME: to_time_hhmm, SERVICE_ID: postData.service_id,
+									CLINICAL_DEPT_ID: postData.clinical_dept_id};
+						dateArrayFromDayToDate.push(object);
 
-					from_time_seconds = from_time_seconds + postData.Appt_interval*60;
-				}
+						from_time_seconds = from_time_seconds + postData.Appt_interval*60;
+					}
+				}//end if
 			}
 		}
 		//END GET FIRST WEEK
 
-		knex('cln_appointment_calendar')
-		.insert(dateArrayFromDayToDate)
-		.then(function(created){
-			res.json({data: postData.cal_header_df_id});
-		})
-		.catch(function(error){
-			commonFunction.commonError(error, 'ERR_SYS_003', res);
-		})
+		if(dateArrayFromDayToDate.length > 0){
+			knex('cln_appointment_calendar')
+			.insert(dateArrayFromDayToDate)
+			.then(function(created){
+				res.json({data: postData.cal_header_df_id});
+			})
+			.catch(function(error){
+				commonFunction.commonError(error, 'ERR_SYS_003', res);
+			})
+		}else{
+			res.json({data: null});
+		}
 
 	},
 

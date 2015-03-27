@@ -220,7 +220,7 @@ angular.module('app.directives.common', [])
                         });
 
                         angular.element(modalElement[0]).modal('show');
-                    }, 400)
+                    }, 200)
                 }
 
                 // We now have a modal object.
