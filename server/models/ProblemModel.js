@@ -5,6 +5,7 @@ var model = {
 		create: {
 
 			required: [
+				{field: 'Patient_id', code: 'ERR_PROBLEM_009'},
 				{field: 'From_date', code: 'ERR_PROBLEM_001'},
 				{field: 'To_date', code: 'ERR_PROBLEM_002'},
 				{field: 'ICD10_code', code: 'ERR_PROBLEM_003'},

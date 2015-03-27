@@ -137,6 +137,7 @@
 	"ERR_PROBLEM_006": "To Date is not Date",
 	"ERR_PROBLEM_007": "From Date larger than To Date",
 	"ERR_PROBLEM_008": "To Date larger than From Date",
+	"ERR_PROBLEM_009": "Patient Name is required",
 	
 
 	"BRD_ALLERGIES" : "Allergies",

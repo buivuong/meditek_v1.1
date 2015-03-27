@@ -61,7 +61,7 @@ angular.module('app.loggedIn.problem.dialog.add', [])
 		save: function(params){ save(params); },
 		close: function(form){ closeDialog(form); },
 		form: {
-			Patient_id: null,
+			Patient_id: '',
 			From_date: '',
 			To_date: '',
 			ICD10_code: '',

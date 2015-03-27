@@ -100,6 +100,25 @@ angular.module('app.loggedIn.problem.directive.list', [])
 
 			}
 
+			var edit = function(id){
+
+				ModalService.showModal({
+
+					resolve: {options: scope.options, id: id},
+					templateUrl: 'modules/problem/dialogs/templates/edit.html',
+					controller: 'ProblemDialogEditController'
+
+				})
+				.then(function(modal){
+					modal.close.then(function(result){
+						if(result){
+							scope.problem.load();
+						}
+					});
+				})
+
+			}
+
 			var removeProblem = function(id){
 
 
@@ -128,6 +147,7 @@ angular.module('app.loggedIn.problem.directive.list', [])
 
 				dialog: {
 					add: function(){ add(); },
+					edit: function(id){ edit(id); },
 					removeProblem: function(id){ removeProblem(id); }
 				},
 
