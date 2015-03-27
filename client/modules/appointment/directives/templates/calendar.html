@@ -46,6 +46,14 @@
 				<span ng-if="col.PATIENTS === '###'">
 					{{col.PATIENTS}}
 				</span>
+				<span ng-if="col.PATIENTS === 'ok'">
+					<span ng-repeat="patient in col.patients">
+						<a ui-sref="loggedIn.appointment.detail({appointmentId: col.CAL_ID, patientId: patient.Patient_id})">
+							{{patient.First_name}} {{patient.Sur_name}}
+						</a>
+						<br>
+					</span>
+				</span>
 			</div>
 		</div>
 	</div> <!-- END APPOINTMENT -->

@@ -12,4 +12,14 @@ angular.module('app.loggedIn.appointment', ['app.loggedIn.appointment.include'])
 				}
 			}
 		})
+
+		.state('loggedIn.appointment.detail', {
+			url: '/:appointmentId/patient/:patientId',
+			views: {
+				'main-content@loggedIn': {
+					templateUrl: 'modules/appointment/views/detail.html',
+					controller: 'AppointmentDetailController'
+				}
+			}
+		})
 })

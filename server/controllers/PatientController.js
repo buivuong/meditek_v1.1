@@ -6,7 +6,6 @@ var S = require('string');
 module.exports = {
 	postList: function(req, res){
 		var postData = req.body.data;
-		console.log(postData);
 
 		knex
 		.column(

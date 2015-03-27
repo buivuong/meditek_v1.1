@@ -41,9 +41,12 @@ module.exports = {
 			'cln_appointment_calendar.SERVICE_ID',
 			'cln_appointment_calendar.DOCTOR_ID',
 			'cln_appointment_calendar.CAL_ID',
-			'cln_appointment_calendar.Patient_id'
+			'cln_appt_patients.Patient_id',
+			'cln_patients.First_name',
+			'cln_patients.Sur_name'
 		)
 		.leftOuterJoin('cln_appt_patients', 'cln_appointment_calendar.CAL_ID', 'cln_appt_patients.CAL_ID')
+		.leftOuterJoin('cln_patients', 'cln_appt_patients.Patient_id', 'cln_patients.Patient_id')
 		.from('cln_appointment_calendar')
 		.where({
 			'cln_appointment_calendar.CURRENT_DATE': postData.datepicker,
@@ -73,7 +76,7 @@ module.exports = {
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
-		})	
+		})
 
 	}
 }
