@@ -61,6 +61,30 @@ angular.module('app.loggedIn.measurement.directives.list', [])
 			 scope.addClick = function(){
 		 		$state.go('loggedIn.measurement.add');
 		   	}
+		   	scope.remove = function(id){
+		   		ModalService.showModal({
+					resolve: {id: id},
+					templateUrl: 'common/views/remove.html',
+					controller: function($scope, close){
+						$scope.close = function(params){
+							close(params);
+						}
+					}
+				}).then(function(modal){
+					modal.close.then(function(result){
+						if(result){
+							MeasurementModel.remove(result).then(function(deleted){
+								scope.measurement.load();
+							}, function(error){});
+						}
+					})
+				})
+
+		   	}
+
+		   	scope.edit = function(id){
+				$state.go('loggedIn.measurement.edit',{measure_id :id});
+			}
 			scope.measurement = {
 				search: search,
 				error: '',
@@ -70,8 +94,7 @@ angular.module('app.loggedIn.measurement.directives.list', [])
 				load: function(){ load(); },
 				loadPage: function(page){ loadPage(page); },
 				onSearch: function(option){ onSearch(option)},
-				sort: function(option){ sort(option)},
-				//addClick : function(){addClick()}
+				sort: function(option){ sort(option)}
 			}
 
 			/* LOAD FIRST */

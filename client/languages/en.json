@@ -137,6 +137,10 @@
 	"ERR_PROBLEM_006": "To Date is not Date",
 	"ERR_PROBLEM_007": "From Date larger than To Date",
 	"ERR_PROBLEM_008": "To Date larger than From Date",
+
+	"ERR_MEASUREMENT_001": "Patient id  is required",
+	"ERR_MEASUREMENT_002": "Date is required",
+	"ERR_MEASUREMENT_003": "Cal id is required",
 	
 
 	"BRD_ALLERGIES" : "Allergies",
