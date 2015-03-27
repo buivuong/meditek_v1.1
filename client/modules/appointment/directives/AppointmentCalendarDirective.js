@@ -37,32 +37,45 @@ angular.module('app.loggedIn.appointment.directives.calendar', [])
 
 					_.forEach(response.data, function(data){
 						var flagTheme = false;
-						var flagPatient = false;
+						var flagPatient = -1;
+						var i = 0;
 						_.forEach(scope.appointment.list, function(list){
 							if(list.FROM_TIME === data.FROM_TIME){
 								if(list.CAL_ID === data.CAL_ID){
-									flagPatient = true;
+									flagPatient = i;
+									return;
 								}else{
 									flagTheme = true;
+									return;
 								}
 							}
+							i++;
 						})
 
 						if(flagTheme){
 
+						}else if(flagPatient !== -1){
+							var doctor_row = 0;
+							_.forEach(response.doctors, function(doctor){
+								if(doctor.DOCTOR_ID === data.DOCTOR_ID){
+									scope.appointment.list[flagPatient].doctors[doctor_row].patients.push({Patient_id: data.Patient_id, First_name: data.First_name, Sur_name: data.Sur_name});
+									scope.appointment.list[flagPatient].doctors[doctor_row].PATIENTS = 'ok';
+								}
+								doctor_row++;
+							})
 						}else{
 							var doctors = [];
 							_.forEach(response.doctors, function(doctor){
 								if(doctor.DOCTOR_ID === data.DOCTOR_ID)
-									doctors.push({DOCTOR_ID: doctor.DOCTOR_ID, DOCTOR_NAME: doctor.NAME, SERVICE_ID: data.SERVICE_ID, CAL_ID: data.CAL_ID, PATIENTS: 'MESS_SYS_010'});
+									doctors.push({DOCTOR_ID: doctor.DOCTOR_ID, DOCTOR_NAME: doctor.NAME, SERVICE_ID: data.SERVICE_ID, CAL_ID: data.CAL_ID, PATIENTS: 'MESS_SYS_010', patients: [] });
 								else
 									doctors.push({DOCTOR_ID: doctor.DOCTOR_ID, DOCTOR_NAME: doctor.NAME, PATIENTS: '###'});
 							})
 
-							var object = {FROM_TIME: data.FROM_TIME, TO_TIME: data.TO_TIME, doctors: doctors};
+							var object = {FROM_TIME: data.FROM_TIME, TO_TIME: data.TO_TIME, CAL_ID: data.CAL_ID, doctors: doctors};
 							scope.appointment.list.push(object);
 						}
-					})
+					}) // end forEach
 
 				}, function(error){})
 			}

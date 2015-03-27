@@ -21,4 +21,13 @@ angular.module('app.loggedIn.measurement',['app.loggedIn.measurement.include'])
 				}
 			}//end views
 		})
+	.state('loggedIn.measurement.edit', {
+			url: '/:measure_id/edit',
+			views: {
+				'main-content@loggedIn': {
+					templateUrl: 'modules/measurement/views/edit.html',
+					controller: 'MeasurementEditController'
+				}
+			}//end views
+		})
 })

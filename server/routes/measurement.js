@@ -8,4 +8,7 @@ module.exports = function(app){
 
 	app.post(module+'list', commonFunction.ensureAuthorized, MeasurementController.postList);
 	app.post(module+'add', commonFunction.ensureAuthorized, MeasurementController.postAdd);
+	app.post(module+'remove', commonFunction.ensureAuthorized, MeasurementController.postRemove);
+	app.post(module+'byId', commonFunction.ensureAuthorized, MeasurementController.postByid);
+	app.post(module+'edit', commonFunction.ensureAuthorized, MeasurementController.postEdit);
 }

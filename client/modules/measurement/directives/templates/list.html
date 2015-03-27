@@ -1,5 +1,5 @@
-<button ng-click="addClick()">Add</button>
 <div class="ui basic segment">
+	<div class="mini ui button" ng-click="addClick()">{{'SYS_BTN_ADD' | translate}}</div>
 	<div class="ui inverted dimmer" ng-class="{active: measurement.loading}" ng-if="measurement.loading">
 		<div class="ui text loader">{{'SYS_LOADING' | translate}}</div>
 	</div>
@@ -74,9 +74,10 @@
 				<td>{{row.patient_id |empty }}</td>
 				<td>{{row.First_name | empty}}</td>
 				<td>{{row.Sur_name | empty}}</td>
-				<td>{{row.measurement_date | empty}}</td>
+				<td>{{row.measurement_date | empty |date: 'DD/MM/YYYY'}}</td>
 				<td ng-class="{negative: !row.Creation_date}">{{row.Creation_date | date: 'DD/MM/YYYY'}}</td>
-				<td><a><i class="remove icon"></i></a></td>
+				<td><a><i class="remove icon" ng-click="remove(row.measure_id)"></i></a>
+				<a><i class="edit icon" ng-click="edit(row.measure_id)"></i></a></td>
 			</tr>
 		</tbody>
 		<tfoot>

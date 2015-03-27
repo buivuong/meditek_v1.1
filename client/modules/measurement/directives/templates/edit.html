@@ -8,7 +8,6 @@
 				<div class ="ui small fluid button" ng-model="measurement.form.patient_id" ng-click="patient.click()">
 				<span  ng-if="measurement.Patient_name">{{measurement.Patient_name}}</span>
 				<span  ng-if="!measurement.Patient_name">Select a Patient</span>
-				<div class="ui tiny red pointing prompt label transition" style="display: none;" id="patient_id_label"></div>
 				</div>
 			</div>
 			<!--END patient_id-->
@@ -16,14 +15,12 @@
 			<div class="required field">
 				<label>Measurement Date</label>
 				<input type="text" ng-date-picker ng-model="measurement.form.measurement_date">
-				<div class="ui tiny red pointing prompt label transition" style="display: none;" id="measurement_date_label"></div>
 			</div>
 			<!--measurement_date-->
 			<!--BP1 -->
 			<div class="required field">
 				<label>Cal id</label>
 				<input type="text" placeholder="cal_id" ng-model="measurement.form.cal_id">
-				<div class="ui tiny red pointing prompt label transition" style="display: none;" id="cal_id_label"></div>
 			</div>
 			<!--BP1-->
 
@@ -229,9 +226,8 @@
 			</div>
 			<!---->
 		</div>
-		
 	</form>
-		<div class ="ui small fluid button" ng-click="measurement.save()">Save</div>
+	<div class="mini ui button" ng-click="measurement.saveEdit()">Save</div>
 </div>
 
 <script type="text/ng-template" id="patientModal">

@@ -49,15 +49,17 @@ angular.module('app.loggedIn.measurement.directives.add', [])
 				}
 
 			var save = function(){
+				CommonModel.beforeSave(scope.measurement.errors);
 		    	var postData = angular.copy(scope.measurement.form);
-		    	console.log(postData);
 		    	postData.Created_by = postData.Last_updated_by = localStorageService.get('user').id;
     			postData.Creation_date = postData.Last_update_date = moment().format('YYYY-MM-DD hh:mm:ss');
+    			postData.measurement_date = CommonModel.convertToDate(postData.measurement_date);
 		  		MeasurementModel.add(postData)
 		  			.then(function(response){
-
+		  				$state.go('loggedIn.measurement');
 		  			}, function(error){
-
+		  				scope.measurement.errors = angular.copy(error.data.errors);
+						CommonModel.beforeError(scope.measurement.errors);
 		  			})
 		    }
 
@@ -94,12 +96,14 @@ angular.module('app.loggedIn.measurement.directives.add', [])
 		    scope.measurement = {
 		    	form:form,
 		    	Patient_name:'',
-		    	save :function(){save();}
+		    	save :function(){save();},
+		    	errors: []
+
 		    }
 
 		    scope.patient = {
 			click: function(){ patientClick(); }
-	}
+			}
 		}
 		
 	}//end return
