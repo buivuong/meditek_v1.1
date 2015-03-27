@@ -8,31 +8,19 @@ module.exports = {
 		knex
 		.column(
 			'doctor_id', 
-			knex.raw('IFNULL(NAME,"") AS NAME'), 
+			'NAME',
 			'DOB', 
-			knex.raw('IFNULL(Email,"") AS Email'), 
-			knex.raw('IFNULL(Phone,"") AS Phone'), 
+			'Email',
+			'Phone',
 			'Creation_date'
 		)
 		.select()
 		.from('doctors')
-		.where(knex.raw('IFNULL(NAME,"") LIKE "%'+postData.NAME+'%"'))
-		.where(knex.raw('IFNULL(Email,"") LIKE "%'+postData.Email+'%"'))
-		.where(knex.raw('IFNULL(Phone,"") LIKE "%'+postData.Phone+'%"'))
 		.orderBy('Creation_date', postData.Creation_date)
 		.limit(postData.limit)
 		.offset(postData.offset)
 		.then(function(rows){
-			knex('doctors').count('doctor_id as a')
-			.where(knex.raw('IFNULL(NAME,"") LIKE "%'+postData.NAME+'%"'))
-			.where(knex.raw('IFNULL(Email,"") LIKE "%'+postData.Email+'%"'))
-			.where(knex.raw('IFNULL(Phone,"") LIKE "%'+postData.Phone+'%"'))
-			.then(function(a){
-				res.json({data: rows, count: a[0].a});
-			})
-			.catch(function(error){
-				commonFunction.commonError(error, 'ERR_SYS_003', res);
-			})
+			res.json({data: rows});
 		})
 		.catch(function(error){
 			commonFunction.commonError(error, 'ERR_SYS_003', res);

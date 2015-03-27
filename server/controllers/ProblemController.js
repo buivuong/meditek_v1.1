@@ -25,21 +25,11 @@ module.exports = {
 		'cln_problems.ICPC_code')
 		.from('cln_problems')
 		.innerJoin('cln_patients', 'cln_problems.Patient_id', 'cln_patients.Patient_id')
-		.where(knex.raw('IFNULL(ICD10_code,"") LIKE "%'+postData.ICD10_code+'%"'))
-		.where(knex.raw('IFNULL(ICPC_code,"") LIKE "%'+postData.ICPC_code+'%"'))
 		.orderBy('cln_problems.Creation_date', postData.Creation_date)
 		.limit(postData.limit)
 		.offset(postData.offset)
 		.then(function(rows){
-			knex('cln_problems').count('cln_problems.Problem_id as a')
-			.where(knex.raw('IFNULL(ICD10_code,"") LIKE "%'+postData.ICD10_code+'%"'))
-			.where(knex.raw('IFNULL(ICPC_code,"") LIKE "%'+postData.ICPC_code+'%"'))
-			.then(function(a){
-				res.json({data: rows,count: a[0].a });
-			})
-			.catch(function(error){
-				commonFunction.commonFunction(error, 'ERR_SYS_003', res);
-			})
+			res.json({data: rows });
 		})
 		.catch(function(error){
 			commonFunction.commonFunction(error, 'ERR_SYS_003', res);

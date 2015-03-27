@@ -465,6 +465,7 @@ module.exports = {
 			}
 		})
 		.catch(function(error){
+		console.log(error);
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
 	},
@@ -495,6 +496,7 @@ module.exports = {
 			res.json({data: postData.id});
 		})
 		.catch(function(error){
+			console.log(error);
 			commonFunction.commonError(error, 'ERR_SYS_003', res);
 		})
 	}
